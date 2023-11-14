@@ -166,7 +166,6 @@ i{
 	margin:auto;
 	height: 600px;
 	width: 600px;
-	transform: rotate(180deg);
 }
 
 #BanCo td {
@@ -176,7 +175,6 @@ i{
 	border-color: #f3cdca;
 	border-collapse:collapse;
 	border-width: 2px;
-	transform: rotate(180deg);
 }
 
 #BanCo td:hover {

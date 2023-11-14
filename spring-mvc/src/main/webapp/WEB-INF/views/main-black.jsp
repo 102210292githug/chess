@@ -90,64 +90,14 @@
 			<div id="divBanCo">
 				<table id="BanCo">
 					<tr>
-						<td id="a8" onclick="Click(this.id)"><img id="ia8" /></td>
-						<td id="b8" onclick="Click(this.id)"><img id="ib8" /></td>
-						<td id="c8" onclick="Click(this.id)"><img id="ic8" /></td>
-						<td id="d8" onclick="Click(this.id)"><img id="id8" /></td>
-						<td id="e8" onclick="Click(this.id)"><img id="ie8" /></td>
-						<td id="f8" onclick="Click(this.id)"><img id="if8" /></td>
-						<td id="g8" onclick="Click(this.id)"><img id="ig8" /></td>
-						<td id="h8" onclick="Click(this.id)"><img id="ih8" /></td>
-					</tr>
-					<tr>
-						<td id="a7" onclick="Click(this.id)"><img id="ia7" /></td>
-						<td id="b7" onclick="Click(this.id)"><img id="ib7" /></td>
-						<td id="c7" onclick="Click(this.id)"><img id="ic7" /></td>
-						<td id="d7" onclick="Click(this.id)"><img id="id7" /></td>
-						<td id="e7" onclick="Click(this.id)"><img id="ie7" /></td>
-						<td id="f7" onclick="Click(this.id)"><img id="if7" /></td>
-						<td id="g7" onclick="Click(this.id)"><img id="ig7" /></td>
-						<td id="h7" onclick="Click(this.id)"><img id="ih7" /></td>
-					</tr>
-					<tr>
-						<td id="a6" onclick="Click(this.id)"><img id="ia6" /></td>
-						<td id="b6" onclick="Click(this.id)"><img id="ib6" /></td>
-						<td id="c6" onclick="Click(this.id)"><img id="ic6" /></td>
-						<td id="d6" onclick="Click(this.id)"><img id="id6" /></td>
-						<td id="e6" onclick="Click(this.id)"><img id="ie6" /></td>
-						<td id="f6" onclick="Click(this.id)"><img id="if6" /></td>
-						<td id="g6" onclick="Click(this.id)"><img id="ig6" /></td>
-						<td id="h6" onclick="Click(this.id)"><img id="ih6" /></td>
-					</tr>
-					<tr>
-						<td id="a5" onclick="Click(this.id)"><img id="ia5" /></td>
-						<td id="b5" onclick="Click(this.id)"><img id="ib5" /></td>
-						<td id="c5" onclick="Click(this.id)"><img id="ic5" /></td>
-						<td id="d5" onclick="Click(this.id)"><img id="id5" /></td>
-						<td id="e5" onclick="Click(this.id)"><img id="ie5" /></td>
-						<td id="f5" onclick="Click(this.id)"><img id="if5" /></td>
-						<td id="g5" onclick="Click(this.id)"><img id="ig5" /></td>
-						<td id="h5" onclick="Click(this.id)"><img id="ih5" /></td>
-					</tr>
-					<tr>
-						<td id="a4" onclick="Click(this.id)"><img id="ia4" /></td>
-						<td id="b4" onclick="Click(this.id)"><img id="ib4" /></td>
-						<td id="c4" onclick="Click(this.id)"><img id="ic4" /></td>
-						<td id="d4" onclick="Click(this.id)"><img id="id4" /></td>
-						<td id="e4" onclick="Click(this.id)"><img id="ie4" /></td>
-						<td id="f4" onclick="Click(this.id)"><img id="if4" /></td>
-						<td id="g4" onclick="Click(this.id)"><img id="ig4" /></td>
-						<td id="h4" onclick="Click(this.id)"><img id="ih4" /></td>
-					</tr>
-					<tr>
-						<td id="a3" onclick="Click(this.id)"><img id="ia3" /></td>
-						<td id="b3" onclick="Click(this.id)"><img id="ib3" /></td>
-						<td id="c3" onclick="Click(this.id)"><img id="ic3" /></td>
-						<td id="d3" onclick="Click(this.id)"><img id="id3" /></td>
-						<td id="e3" onclick="Click(this.id)"><img id="ie3" /></td>
-						<td id="f3" onclick="Click(this.id)"><img id="if3" /></td>
-						<td id="g3" onclick="Click(this.id)"><img id="ig3" /></td>
-						<td id="h3" onclick="Click(this.id)"><img id="ih3" /></td>
+						<td id="a1" onclick="Click(this.id)"><img id="ia1" /></td>
+						<td id="b1" onclick="Click(this.id)"><img id="ib1" /></td>
+						<td id="c1" onclick="Click(this.id)"><img id="ic1" /></td>
+						<td id="d1" onclick="Click(this.id)"><img id="id1" /></td>
+						<td id="e1" onclick="Click(this.id)"><img id="ie1" /></td>
+						<td id="f1" onclick="Click(this.id)"><img id="if1" /></td>
+						<td id="g1" onclick="Click(this.id)"><img id="ig1" /></td>
+						<td id="h1" onclick="Click(this.id)"><img id="ih1" /></td>
 					</tr>
 					<tr>
 						<td id="a2" onclick="Click(this.id)"><img id="ia2" /></td>
@@ -160,17 +110,66 @@
 						<td id="h2" onclick="Click(this.id)"><img id="ih2" /></td>
 					</tr>
 					<tr>
-						<td id="a1" onclick="Click(this.id)"><img id="ia1" /></td>
-						<td id="b1" onclick="Click(this.id)"><img id="ib1" /></td>
-						<td id="c1" onclick="Click(this.id)"><img id="ic1" /></td>
-						<td id="d1" onclick="Click(this.id)"><img id="id1" /></td>
-						<td id="e1" onclick="Click(this.id)"><img id="ie1" /></td>
-						<td id="f1" onclick="Click(this.id)"><img id="if1" /></td>
-						<td id="g1" onclick="Click(this.id)"><img id="ig1" /></td>
-						<td id="h1" onclick="Click(this.id)"><img id="ih1" /></td>
+						<td id="a3" onclick="Click(this.id)"><img id="ia3" /></td>
+						<td id="b3" onclick="Click(this.id)"><img id="ib3" /></td>
+						<td id="c3" onclick="Click(this.id)"><img id="ic3" /></td>
+						<td id="d3" onclick="Click(this.id)"><img id="id3" /></td>
+						<td id="e3" onclick="Click(this.id)"><img id="ie3" /></td>
+						<td id="f3" onclick="Click(this.id)"><img id="if3" /></td>
+						<td id="g3" onclick="Click(this.id)"><img id="ig3" /></td>
+						<td id="h3" onclick="Click(this.id)"><img id="ih3" /></td>
+					</tr>
+					<tr>
+						<td id="a4" onclick="Click(this.id)"><img id="ia4" /></td>
+						<td id="b4" onclick="Click(this.id)"><img id="ib4" /></td>
+						<td id="c4" onclick="Click(this.id)"><img id="ic4" /></td>
+						<td id="d4" onclick="Click(this.id)"><img id="id4" /></td>
+						<td id="e4" onclick="Click(this.id)"><img id="ie4" /></td>
+						<td id="f4" onclick="Click(this.id)"><img id="if4" /></td>
+						<td id="g4" onclick="Click(this.id)"><img id="ig4" /></td>
+						<td id="h4" onclick="Click(this.id)"><img id="ih4" /></td>
+					</tr>
+					<tr>
+						<td id="a5" onclick="Click(this.id)"><img id="ia5" /></td>
+						<td id="b5" onclick="Click(this.id)"><img id="ib5" /></td>
+						<td id="c5" onclick="Click(this.id)"><img id="ic5" /></td>
+						<td id="d5" onclick="Click(this.id)"><img id="id5" /></td>
+						<td id="e5" onclick="Click(this.id)"><img id="ie5" /></td>
+						<td id="f5" onclick="Click(this.id)"><img id="if5" /></td>
+						<td id="g5" onclick="Click(this.id)"><img id="ig5" /></td>
+						<td id="h5" onclick="Click(this.id)"><img id="ih5" /></td>
+					</tr>
+					<tr>
+						<td id="a6" onclick="Click(this.id)"><img id="ia6" /></td>
+						<td id="b6" onclick="Click(this.id)"><img id="ib6" /></td>
+						<td id="c6" onclick="Click(this.id)"><img id="ic6" /></td>
+						<td id="d6" onclick="Click(this.id)"><img id="id6" /></td>
+						<td id="e6" onclick="Click(this.id)"><img id="ie6" /></td>
+						<td id="f6" onclick="Click(this.id)"><img id="if6" /></td>
+						<td id="g6" onclick="Click(this.id)"><img id="ig6" /></td>
+						<td id="h6" onclick="Click(this.id)"><img id="ih6" /></td>
+					</tr>
+					<tr>
+						<td id="a7" onclick="Click(this.id)"><img id="ia7" /></td>
+						<td id="b7" onclick="Click(this.id)"><img id="ib7" /></td>
+						<td id="c7" onclick="Click(this.id)"><img id="ic7" /></td>
+						<td id="d7" onclick="Click(this.id)"><img id="id7" /></td>
+						<td id="e7" onclick="Click(this.id)"><img id="ie7" /></td>
+						<td id="f7" onclick="Click(this.id)"><img id="if7" /></td>
+						<td id="g7" onclick="Click(this.id)"><img id="ig7" /></td>
+						<td id="h7" onclick="Click(this.id)"><img id="ih7" /></td>
+					</tr>
+					<tr>
+						<td id="a8" onclick="Click(this.id)"><img id="ia8" /></td>
+						<td id="b8" onclick="Click(this.id)"><img id="ib8" /></td>
+						<td id="c8" onclick="Click(this.id)"><img id="ic8" /></td>
+						<td id="d8" onclick="Click(this.id)"><img id="id8" /></td>
+						<td id="e8" onclick="Click(this.id)"><img id="ie8" /></td>
+						<td id="f8" onclick="Click(this.id)"><img id="if8" /></td>
+						<td id="g8" onclick="Click(this.id)"><img id="ig8" /></td>
+						<td id="h8" onclick="Click(this.id)"><img id="ih8" /></td>
 					</tr>
 				</table>
-
 			</div>
 
 			<div id="divNguoiChoiCoDo">
