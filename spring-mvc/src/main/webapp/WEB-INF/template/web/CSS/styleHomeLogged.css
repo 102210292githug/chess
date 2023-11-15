@@ -18,6 +18,22 @@ button:hover{
 	background-color: rgb(160, 158, 158);
 }
 
+#settingsChoose{
+	display: none;
+	position: absolute;
+    margin-top: 650px;
+    margin-left: 200px;
+    z-index: 1;
+}
+
+.buttonSettingsChoose{
+    font-size: 20px;
+    width: 135px;
+    border: none;
+    margin: 3px;
+    background-color: #c6c2c2;
+}
+
 .buttonTop{
 	display: block;
 	width: 200px;

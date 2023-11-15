@@ -48,6 +48,8 @@
 					<i style="color: rgb(104, 169, 243);" class="fa-solid fa-house"></i>CHESS
 					ONLINE
 				</button>
+				<button id="play" class="buttonTop">
+					<i class="fa-solid fa-chess"></i>PLAY</button>
 				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
@@ -88,6 +90,14 @@
 			</div>
 
 			<div id="divBanCo">
+				<div class="competitor">
+		          <img style="margin: 0px;" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
+		          <div class="contentCompetitor">
+		            <p>Competitor</p>
+		            <p style="color: red; margin-top: -15px;">Elo: 0</p> 
+		          </div>
+		          <img class="flag" src="./template/web/Icon/la-co-viet-nam-vector-1.png">
+        		</div>
 				<table id="BanCo">
 					<tr>
 						<td id="a8" onclick="Click(this.id)"><img id="ia8" /></td>
@@ -170,7 +180,14 @@
 						<td id="h1" onclick="Click(this.id)"><img id="ih1" /></td>
 					</tr>
 				</table>
-
+				<div class="competitor" style="margin-top: -10px;">
+		          <img style="margin: 0px;" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
+		          <div class="contentCompetitor">
+		            <p>Competitor</p>
+		            <p style="color: red; margin-top: -15px;">Elo: 0</p> 
+		          </div>
+		          <img class="flag" src="./template/web/Icon/la-co-viet-nam-vector-1.png">
+        		</div>
 			</div>
 
 			<div id="divNguoiChoiCoDo">

@@ -11,7 +11,7 @@
 <link rel="icon"
 	href="<c:url value='/template/web/QuanCo/Ma_Trang.png'/>" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/template/web/CSS/style.css'/>" />
+	href="<c:url value='/template/web/CSS/styleHomeLogged.css'/>" />
 <script src="https://kit.fontawesome.com/5175756225.js"
 	crossorigin="anonymous"></script>
 <script type="text/javascript"
@@ -56,25 +56,40 @@
 				<button id="history" class="buttonTop">
 					<i class="fa-solid fa-clock"></i>HISTORY
 				</button>
-			    <button id="login">LOGIN</button>
-   				<button id="signup">SIGN UP</button>
 			</div>
 
-			<div id="left-bot">
-				<button class="buttonBot">
-					<i class="fa-solid fa-circle-half-stroke"></i>Dark UI
-				</button>
-				<button class="buttonBot">
-					<i class="fa-solid fa-arrow-left"></i>Collapse
-				</button>
-				<button class="buttonBot">
-					<i class="fa-solid fa-gear"></i>Settings
-				</button>
-				<button class="buttonBot">
-					<i class="fa-solid fa-circle-info"></i>Helps
-				</button>
-			</div>
-		</div>
+				  <div id="left-bot">
+				    <button class="buttonBot">
+				    	<i class="fa-solid fa-circle-half-stroke"></i>Dark UI</button>
+				    <button class="buttonBot">
+				    	<i class="fa-solid fa-arrow-left"></i>Collapse</button>
+				    <button id="settingsButton" class="buttonBot">
+				    	<i class="fa-solid fa-gear"></i>Settings</button>
+				    <button class="buttonBot">
+				    	<i class="fa-solid fa-circle-info"></i>Helps</button>
+				  </div>
+				</div>
+				
+				<div id="settingsChoose">
+				  <button id="logOut" class="buttonSettingsChoose">Log out</button>
+				  <br>
+				  <button id="profile" class="buttonSettingsChoose">Profie</button>
+				</div>
+				
+				<script>
+				  // Lấy tham chiếu đến button và đối tượng cần thay đổi
+				  const button = document.getElementById('settingsButton');
+				  const settingsChoose = document.getElementById('settingsChoose');
+				
+				  // Thêm sự kiện hover
+				  button.addEventListener('mouseover', () => {
+				    settingsChoose.style.display = 'block';
+				  });
+				
+				  button.addEventListener('mouseout', () => {
+				    settingsChoose.style.display = 'none';
+				  });
+				</script>
 
 		<div id="mid">
 			<div id="divNguoiChoiCoDen">
