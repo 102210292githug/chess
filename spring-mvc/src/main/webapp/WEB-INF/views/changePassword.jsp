@@ -9,7 +9,7 @@
 <title>CHESS ONLINE - INFOMATION</title>
 </head>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/template/web/CSS/styleInfomation.css'/>" />
+	href="<c:url value='/template/web/CSS/styleChangePassword.css'/>" />
 <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
 
 <body>
@@ -58,30 +58,23 @@
                     <div id="contentRightBotInf">
                         <div class="rightBotInf" id="userName">
                             <p class="nameInfUser">Username</p>
-                            <p style="margin-left: 108px;" class="infoUser">Nhom3pbl</p>
+                            <p style="margin-left: 130px;" class="infoUser">Nhom3pbl</p>
                         </div>
 
                         <div class="rightBotInf" id="firstName">
-                            <p class="nameInfUser">First Name</p>
-                            <input style="margin: 0 0 10px 100px; width: 250px;" class="infoUser" type="text" value="Admin">
+                            <p class="nameInfUser">Your Password</p>
+                            <input style="margin: 0 0 10px 100px; width: 250px;" class="infoUser" type="password" value="">
                         </div>
 
                         <div class="rightBotInf" id="lastName">
-                            <p class="nameInfUser">Last Name</p>
-                            <input style="margin: 0 0 10px 102px; width: 250px;" class="infoUser" class="infoUser" type="text" value="Admin">
+                            <p class="nameInfUser">New Password</p>
+                            <input style="margin: 0 0 10px 102px; width: 250px;" class="infoUser" class="infoUser" type="password" value="">
                         </div>
 
-                        <div class="rightBotInf" id="email">
-                            <p class="nameInfUser">Email</p>
-                            <p style="margin-left: 135px;" class="infoUser">nhom3pbl@gmail.com</p>
-                            <a id="change" href="">Change</a>
+                        <div class="rightBotInf" id="lastName">
+                            <p class="nameInfUser">Confirm New Password</p>
+                            <input style="margin: 0 0 10px 46px; width: 250px;" class="infoUser" class="infoUser" type="password" value="">
                         </div>
-
-                        <div class="rightBotInf" id="location">
-                            <p class="nameInfUser">Location</p>
-                            <input style="margin-left: 115px; width: 250px;" class="infoUser" type="text" name="" id="">
-                        </div>
-
                         <button id="save">SAVE</button>
                     </div>                    
                 </div>
