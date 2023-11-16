@@ -10,7 +10,7 @@ public class HomeController {
   
    @RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
    public ModelAndView homePage() {
-      ModelAndView mav = new ModelAndView("play");
+      ModelAndView mav = new ModelAndView("history");
       return mav;
    }
 }

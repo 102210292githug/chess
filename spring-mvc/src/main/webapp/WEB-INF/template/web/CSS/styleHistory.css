@@ -5,6 +5,12 @@ body{
 	font-family: 'Times New Roman', Times, serif;
 }
 
+#divMain{
+    height: 100%;
+    width: auto;
+    display: flex;
+}
+
 button:hover{
 	cursor: pointer;
 }
@@ -14,8 +20,24 @@ button:hover{
 	flex-direction: column;
 	justify-content: space-between;
 	width: 200px;
-	height: 100%;
+    height: 730px;
 	background-color: rgb(160, 158, 158);
+}
+
+#settingsChoose{
+	display: none;
+	position: absolute;
+    margin-top: 650px;
+    margin-left: 200px;
+    z-index: 1;
+}
+
+.buttonSettingsChoose{
+    font-size: 20px;
+    width: 135px;
+    border: none;
+    margin: 3px;
+    background-color: #c6c2c2;
 }
 
 .buttonTop{
@@ -26,6 +48,7 @@ button:hover{
 	border: none;
 	background-color: rgb(192, 190, 190);
 	font-weight: bolder;
+    font-size: 15px;
 }
 
 #home{
@@ -41,148 +64,146 @@ button:hover{
 	background-color: rgb(192, 190, 190);
 }
 
+.buttonTop:hover, .buttonBot:hover{
+    background-color: rgb(157, 156, 156);
+}
+
 i{
-	margin: 0px 5%;
+	margin: -10px 5%;
 	width: 20px;
 	height: auto;
 }
 
-#mid{
-	display: block;
-	width: calc(100% - 700px);
-	height: auto;
-    margin: 50px 0px 50px 50px;
+#contentSettings{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
 }
 
-.competitor{
-	display: flex;
-    height: 60px;
-	margin-top: -50px;
+#settings{
+    display: flex;
+    font-size: 25px;
+    font-weight: bolder;
+    height: auto;
+    width: 220px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.contentCompetitor{
-	font-weight: bold;
+#content{
+    display: flex;
+    width: 200px;
+    height: auto;
+    background-color: rgb(160, 158, 158);
 }
 
-.flag{
-	margin: 15px;
+#contentLeft{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 540px;
+    margin: 20px 0;
+}
+
+.buttonContentLeft{
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 5px 0px;
+    border: none;
+    background-color: rgb(192, 190, 190);
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.buttonContentLeft:hover{
+    background-color: rgb(184, 182, 182);
 }
 
 #right{
-	/* display: flex;
-	flex-direction: column;
-	justify-content: center; */
-    width: 400px;
-    height: 600px;
-    margin: 50px 50px 50px 0px;
-	background-color: rgb(179, 179, 187);
-	font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 500px);
+    height: 640px;
+    margin: 50px;
+    background-color: rgb(200 200 200);
+    border-radius: 10px;
 }
 
 #historyContent{
-	background-color: #919495;
-	display: flex;
-	justify-content: center;
-	font-family: 'Courier New', Courier, monospace;
+    overflow-y: auto;
+    height: 550px;
 }
 
-#historyResult{
-	display: flex;
-	flex-direction: column;
-	margin: 20px 50px;
-	width: 500px;
-	height: 500px;
-	overflow-y: auto;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+#historyTitle{
+    display: flex;
+    font-size: 25px;
+    font-weight: bolder;
+    height: auto;
+    width: 220px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*CSS Div Main*/
-#divMain{
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-/*CSS Div ThongTin*/
-#divNguoiChoiCoDen{
-	display: none;
-	float:left;
-	width: 25%;
-	height:100%;
-}
-#tblNguoiCoDen {
- 	width : 100%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 140%;
+.boxHistoryContent{
+    display: flex;
+    width: calc(100% - 100px);
+    height: 70px;
+    background-color: rgb(160, 158, 158);
+    margin: 15px 0px 15px 45px;
+    border-radius: 10px;
 }
 
-#iCoDo, #iCoDen {
-	height: 100px;
-	width: 100px;
+.userA{
+    width: 40%;
+    display: flex;
+    align-items: center;
 }
 
-#tblNguoiChoiCoDo{
-   	width : 100%;
-	margin-left: auto;
-	margin-right: auto;
+.infoUser{
+    margin: 0px 20px 0px 10px;
 }
 
-#tblNguoiCoDen td, #tblNguoiChoiCoDo td{
-	margin:auto;
-	text-align:center;
-	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
-	font-weight:lighter;
-	font-size:40px;
-	min-height: 100%;
+.infoUserName{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 20px;
 }
 
-/*CSS Div Ban co*/
-#divBanCo{
-	padding-top: 5px;
-	float:left;
-	width: 50%;
-	height: 100%;
-}
-/*CSS Div ChoiLai*/
-#divNguoiChoiCoDo{
-	display: none;
-	float: left;
-	width: 26%;
-	height:100%;
+.infoUserElo{
+    color: red;
+    font-weight: bold;
 }
 
-#PointCoDo {
-	color:#FF0004;
+.result{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-
-/*<!--CSS Table ban co-->*/
-#BanCo{
-	margin:auto;
-	height: 600px;
-	width: 600px;
+.resultTitle, .pointElo, .resultTitleLose, .pointEloLose{
+    margin: 0px;
 }
 
-#BanCo td {
-	height: 70px;
-	width: 70px;
-	border-style:solid;
-	border-color: #f3cdca;
-	border-collapse:collapse;
-	border-width: 2px;
+.resultTitle{
+    color: yellow;
 }
 
-#BanCo td:hover {
-  border-width: 2px;
-  border-collapse: collapse;
-  border-style: solid;
-  border-color: #c51414;
+.pointElo{
+    color: rgb(160 255 160);
 }
 
-img{
-	display: block;
-    margin: 0 auto;
+.pointEloLose{
+    color: #962bde;
+}
+
+.userB{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.colorUser{
+    padding-left: 10px;
 }
