@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
-<<<<<<< HEAD
 	UserDAO userDAO = new UserDAO();
 	MoveDAO moveDAO = new MoveDAO();
 
@@ -93,12 +92,3 @@ public class HomeController {
 
 
 }
-=======
-  
-   @RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
-   public ModelAndView homePage() {
-      ModelAndView mav = new ModelAndView("history");
-      return mav;
-   }
-}
->>>>>>> 1ab46ff8f5ac6d5ffef6380e42a813ac86ca17b4

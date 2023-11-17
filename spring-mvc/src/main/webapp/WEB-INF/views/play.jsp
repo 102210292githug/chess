@@ -234,37 +234,10 @@
 		</div>
 
 		<div id="right">
-<<<<<<< HEAD
 			<div id="historyResult">
 		    <ol id="myList">
 		    
 		    </ol>
-=======
-		  <div id="historyResult">
-		    <ol id="myList">
-		      <li class="result">a1 - a2</li>
-		      <li class="result">a1 - a2</li>
-		      <li class="result">a1 - a2</li>
-		    </ol>
-		  </div>
-		  <div id="chat">
-		    <div class="competitorChat">Hello You</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="meChat">Hello Competitor</div>
-		  </div>
-		  <div id="message">
-		    <button class="messageButton" onclick="createMeChat(this)">AloAlo</button>
-		    <button class="messageButton" onclick="createMeChat(this)">Pro Player</button>
-		    <button class="messageButton" onclick="createMeChat(this)">Ván nữa đi</button>
-		    <button class="messageButton" onclick="createMeChat(this)">Không sợ đâu</button>
-		    <button class="messageButton" onclick="createMeChat(this)">Gà rứa mi</button>
-		    <button class="messageButton" onclick="createMeChat(this)">I Love You</button>
->>>>>>> 1ab46ff8f5ac6d5ffef6380e42a813ac86ca17b4
 		  </div>
 			<div id="chat">
 				<div class="competitorChat">Hello You</div>
@@ -289,92 +262,4 @@
 	</div>
 
 </body>
-
-		<script>
-	  function createMeChat(button) {
-	    // Tạo một thẻ div mới với class "meChat"
-	    var newDiv = document.createElement("div");
-	    newDiv.className = "meChat";
-	
-	    // Lấy giá trị của nút bấm và gán vào nội dung của thẻ div
-	    var buttonText = button.textContent;
-	    newDiv.textContent = buttonText;
-	
-	    // Lấy thẻ cha có id "chat"
-	    var chatContainer = document.getElementById("chat");
-	
-	    // Thêm thẻ div mới vào thẻ cha
-	    chatContainer.appendChild(newDiv);
-	  }
-	</script>
-	
-	<script type="text/javascript">
-	var imported = document.createElement('script');
-	imported.src = 'template/web/JS/Sources.js';
-	document.head.appendChild(imported);
-
-	//
-	function VeBanCoTrangDen() {
-		for (var j = 1; j <= 8; j++) {
-			for (var i = 'a'.charCodeAt(0); i <= 'h'.charCodeAt(0); i++) {
-				var kytu = String.fromCharCode(i);
-				var id = kytu + j;
-				var laOTrang = (i + j) % 2 == 1;
-				document.getElementById(id).style.backgroundColor = laOTrang ? Mau.Trang : Mau.Den;
-			}
-		}
-		addListItem();
-	}
-
-	function addListItem() {
-	    // Lấy thẻ cha <ol>
-	    var parentOl = document.getElementById("myList");
-
-	    // Tạo một thẻ <li> mới
-	    var newLi = document.createElement("li");
-
-	    // Gán class "result" cho thẻ <li>
-	    newLi.className = "result";
-
-	    // Gán nội dung cho thẻ <li> theo định dạng "a1 - a2"
-	    newLi.textContent = "a1 - a2";
-
-	    // Thêm thẻ <li> mới vào thẻ cha <ol>
-	    parentOl.appendChild(newLi);
-	  }
-
-	function DatCo() {
-	    for (var i = 1; i < 9; i++) {
-	        for (var j = 1; j < 9; j++) {
-	            var cellId = "i" + String.fromCharCode('a'.charCodeAt(0) + j - 1) + i;
-	            document.getElementById(cellId).src = "template/web/QuanCo/Rong.png";
-	        }
-	    }
-
-	    // Đặt quân cờ đen
-	    for (var j = 1; j < 9; j++) {
-	        var pawnId = "i" + String.fromCharCode('a'.charCodeAt(0) + j - 1) + "7";
-	        document.getElementById(pawnId).src = CoDen.Tot;
-	    }
-
-	    var blackPieces = [CoDen.Xe, CoDen.Ma, CoDen.Tuong, CoDen.Hau, CoDen.Vua, CoDen.Tuong, CoDen.Ma, CoDen.Xe];
-	    for (var j = 1; j < 9; j++) {
-	        var pieceId = "i" + String.fromCharCode('a'.charCodeAt(0) + j - 1) + "8";
-	        document.getElementById(pieceId).src = blackPieces[j - 1];
-	    }
-
-	    // Đặt quân cờ trắng
-	    for (var j = 1; j < 9; j++) {
-	        var pawnId = "i" + String.fromCharCode('a'.charCodeAt(0) + j - 1) + "2";
-	        document.getElementById(pawnId).src = CoTrang.Tot;
-	    }
-
-	    var whitePieces = [CoTrang.Xe, CoTrang.Ma, CoTrang.Tuong, CoTrang.Hau, CoTrang.Vua, CoTrang.Tuong, CoTrang.Ma, CoTrang.Xe];
-	    for (var j = 1; j < 9; j++) {
-	        var pieceId = "i" + String.fromCharCode('a'.charCodeAt(0) + j - 1) + "1";
-	        document.getElementById(pieceId).src = whitePieces[j - 1];
-	    }
-	}
-	</script>
-
 </html>
