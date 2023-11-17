@@ -17,22 +17,19 @@ class ChessClient:
                 # Receive message from server
                 data = client_socket.recv(1024).decode()
                 print(f"Received: {data}")
-                if " and " in data:
-                    player1, player2 = data.split(" and ")
-
-                    if player2.strip() == "computer":
-                        room_id = self.room_manager.create_player_vs_computer_room(player1.strip())
-                        response = room_id
+                value = data.split()
+                if value[0] == "createGame":
+                    if value[1] == 'mode=0':
+                        self.room_manager.create_player_vs_computer_room(value[2], value[4])
                     else:
-                        room_id = self.room_manager.create_player_vs_player_room(player1.strip(), player2.strip())
-                        response = room_id
+                        self.room_manager.create_player_vs_player_room(value[2], value[3], value[4])
                     print("PVC: " + str(room_manager.list_pvc_rooms()))
                     print("PVP: " + str(room_manager.list_pvp_rooms()))
-
-                elif " move: " in data:
-                    room_id, move_data = data.split(" move: ")
+                    response = "Created"
+                elif value[0] == "move":
+                    room_id = value[1].split('=')[-1]
+                    move_data = value[2].split('=')[-1]
                     move = move_data.strip()
-
                     room_pvp = self.room_manager.get_pvp_room(room_id)
                     room_pvc = self.room_manager.get_pvc_room(room_id)
 
@@ -48,6 +45,8 @@ class ChessClient:
                         # print(response)
                     else:
                         response = "Invalid room ID"
+                elif value[0] == "get":
+                    response = room_manager.get_board_string_for_room(value[1])
                 else:
                     response = "Invalid command"
 

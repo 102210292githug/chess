@@ -33,7 +33,11 @@ function highlightPossibleMoves(moveIds) {
 }
 
 
-
+function KhoiTao2(board) {
+	VeBanCoTrangDen();
+	DatCo2(board);
+	isClick = false;
+}
 function KhoiTao() {
 	VeBanCoTrangDen();
 	DatCo();

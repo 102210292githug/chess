@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/demo/AI/ClientConnection.java=UTF-8
+encoding//src/main/java/com/demo/AI/HandlerMessage.java=UTF-8
+encoding//src/main/java/com/demo/AI/RoomManager.java=UTF-8
 encoding//src/main/java/com/demo/controller/ChessRoom.java=UTF-8
+encoding//src/main/java/com/demo/controller/GameHistoryController.java=UTF-8
+encoding//src/main/java/com/demo/controller/HomeController.java=UTF-8
 encoding//src/main/java/com/demo/controller/MyWebSocket.java=UTF-8
-encoding//src/main/java/com/demo/controller/ServerAI.java=UTF-8
+encoding//src/main/java/com/demo/controller/WebSocket.java=UTF-8
+encoding//src/main/java/com/demo/model/GameHistory.java=UTF-8

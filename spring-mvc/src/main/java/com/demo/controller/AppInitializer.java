@@ -3,6 +3,8 @@ package com.demo.controller;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.demo.AI.ServerAI;
+
 public class AppInitializer implements ServletContextListener {
 
     private Thread serverThread;

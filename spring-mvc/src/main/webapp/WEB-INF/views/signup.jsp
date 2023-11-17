@@ -15,14 +15,15 @@
     <div id="content">
         <h1 id="contentLogin">CHESS ONLINE</h1>
         <div id="boxLogin">
-            <form id="formBoxLogin" action="">
-                <input  class="inputInfo" type="text" placeholder="User name" name="" id="">
-                <input type="email" class="inputInfo" placeholder="Email">
-                <input class="inputInfo" type="password" placeholder="Password" name="" id="">
+            <form id="formBoxLogin" action="${pageContext.request.contextPath}/signup" method="post">
+                <input  class="inputInfo" type="text" placeholder="User name" name="username" id="">
+                <input type="email" class="inputInfo" placeholder="Email" name="email">
+                <input class="inputInfo" type="password" placeholder="Password" name="password" id="">
                 <input type="password" class="inputInfo" placeholder="Confirm Password">
+                <p style="color: red; font-size: 15px; margin-left: 140px;">${error}</p>
                 <button id="login">Sign up</button>
                 <hr>
-                <a style="margin-top: 10px; color: #3cbbea;" href="">Login - and star playing chess!</a>
+                <a style="margin-top: 10px; color: #3cbbea;" href="<c:url value='/login'/>">Login - and star playing chess!</a>
             </form>
         </div>
     </div>

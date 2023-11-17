@@ -5,81 +5,81 @@ function Vua(id){
 		var X_ = parseInt(X);
 		var Y_ = parseInt(Y);
 
-		switch(isCoTrang(X, Y))
+		switch(isCoDo(X, Y))
 		{
-//C? d?
+//Cờ đỏ
 			case true:
-				//Ði xu?ng
-				if( !isBien(X_ - 1, Y_) && !isCoTrang(X_ - 1, Y_)) {
+				//Đi xuống
+				if( !isBien(X_ - 1, Y_) && !isCoDo(X_ - 1, Y_)) {
 					DoiMau(X_ - 1, Y);
 				}
 				
-				//Ði xu?ng ph?i 
-				if( !isBien(X_ - 1, Y_ + 1) && !isCoTrang(X_ - 1,Y_ + 1)) {
+				//Đi xuống phải 
+				if( !isBien(X_ - 1, Y_ + 1) && !isCoDo(X_ - 1,Y_ + 1)) {
 					DoiMau(X_ - 1, Y_ + 1);
 				}
 				
-				// Ði xu?ng trái			
-				if( !isBien(X_ - 1, Y_ - 1) && !isCoTrang(X_ - 1,Y_ - 1)) {
+				// Đi xuống trái			
+				if( !isBien(X_ - 1, Y_ - 1) && !isCoDo(X_ - 1,Y_ - 1)) {
 					DoiMau(X_ - 1, Y_ - 1);
 				}
 
 				
-				//Ði lên	
-				if( !isBien(X_ + 1, Y_) && !isCoTrang(X_ + 1, Y_)) {
+				//Đi lên	
+				if( !isBien(X_ + 1, Y_) && !isCoDo(X_ + 1, Y_)) {
 					DoiMau(X_ + 1, Y_);
 				}
 				
-				// Ði lên ph?i
-				if( !isBien(X_ + 1, Y_ + 1) && !isCoTrang(X_ + 1, Y_ + 1)) {
+				// Đi lên phải
+				if( !isBien(X_ + 1, Y_ + 1) && !isCoDo(X_ + 1, Y_ + 1)) {
 					DoiMau(X_ + 1, Y_ + 1);
 				}
 
-				// Ði lên trái
-				if( !isBien(X_ + 1, Y_ - 1) && !isCoTrang(X_ + 1, Y_ - 1)) {
+				// Đi lên trái
+				if( !isBien(X_ + 1, Y_ - 1) && !isCoDo(X_ + 1, Y_ - 1)) {
 					DoiMau(X_ + 1, Y_ - 1);
 				}
 				
 				//qua trái
-				if(!isBien(X_, Y_ - 1) && !isCoTrang(X_, Y_ - 1)){
+				if(!isBien(X_, Y_ - 1) && !isCoDo(X_, Y_ - 1)){
 				DoiMau(X_, Y_- 1); 
 				}
 				
 				// qua phai 
-				if(!isBien(X_, Y_ + 1) && !isCoTrang(X_, Y_ + 1)){
+				if(!isBien(X_, Y_ + 1) && !isCoDo(X_, Y_ + 1)){
 				DoiMau(X_, Y_ + 1);
 			}
 			break;
-//C? Ðen
+//Cờ Đen
 			case false:
 
-				// Ði xu?ng
+				// Đi xuống
 				if( !isBien(X_ - 1, Y_) && !isCoDen(X_ - 1, Y_)) {
 					DoiMau(X_ - 1, Y);
 				}
 				
-				//Ði xu?ng ph?i 
+				//Đi xuống phải 
 				if( !isBien(X_ - 1, Y_ + 1) && !isCoDen(X_ - 1,Y_ + 1)) {
 					DoiMau(X_ - 1, Y_ + 1);
 				}
 				
-				// Ði xu?ng trái			
+				// Đi xuống trái			
 				if( !isBien(X_ - 1, Y_ - 1) && !isCoDen(X_ - 1,Y_ - 1)) {
 					DoiMau(X_ - 1, Y_ - 1);
 				}
 
 				
-				//Ði lên	
+				//Đi lên	
 				if( !isBien(X_ + 1, Y_) && !isCoDen(X_ + 1, Y_)) {
 					DoiMau(X_ + 1, Y_);
 				}
 				
-				// Ði lên ph?i
+				// Đi lên phải
 				if( !isBien(X_ + 1, Y_ + 1) && !isCoDen(X_ + 1, Y_ + 1)) {
 					DoiMau(X_ + 1, Y_ + 1);
 				}
 
-				// Ði lên trái
+				// Đi lên trái
 				if( !isBien(X_ + 1, Y_ - 1) && !isCoDen(X_ + 1, Y_ - 1)) {
 					DoiMau(X_ + 1, Y_ - 1);
 				}

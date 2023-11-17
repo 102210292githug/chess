@@ -6,6 +6,7 @@ var CoDen = {
 	Hau: 'template/web/QuanCo/Hau_Den.png',
 	Vua: 'template/web/QuanCo/Vua_Den.png',
 	Rong: "template/web/QuanCo/Rong.png",
+	// Name
 	Tot_Name: 'Tot_Den',
 	Tuong_Name: 'Tuong_Den',
 	Ma_Name: 'Ma_Den',
@@ -14,24 +15,25 @@ var CoDen = {
 	Vua_Name: 'Vua_Den'
 }
 
-var CoTrang = {
-	Tot: 'template/web/QuanCo/Tot_Trang.png',
-	Tuong: 'template/web/QuanCo/Tuong_Trang.png',
-	Ma: 'template/web/QuanCo/Ma_Trang.png',
-	Xe: 'template/web/QuanCo/Xe_Trang.png',
-	Hau: 'template/web/QuanCo/Hau_Trang.png',
-	Vua: 'template/web/QuanCo/Vua_Trang.png',
+var CoDo = {
+	Tot: 'template/web/QuanCo/Tot_Do.png',
+	Tuong: 'template/web/QuanCo/Tuong_Do.png',
+	Ma: 'template/web/QuanCo/Ma_Do.png',
+	Xe: 'template/web/QuanCo/Xe_Do.png',
+	Hau: 'template/web/QuanCo/Hau_Do.png',
+	Vua: 'template/web/QuanCo/Vua_Do.png',
 	Rong: "template/web/QuanCo/Rong.png",
-	Tot_Name: 'Tot_Trang',
-	Tuong_Name: 'Tuong_Trang',
-	Ma_Name: 'Ma_Trang',
-	Xe_Name: 'Xe_Trang',
-	Hau_Name: 'Hau_Trang',
-	Vua_Name: 'Vua_Trang'
+	// Name
+	Tot_Name: 'Tot_Do',
+	Tuong_Name: 'Tuong_Do',
+	Ma_Name: 'Ma_Do',
+	Xe_Name: 'Xe_Do',
+	Hau_Name: 'Hau_Do',
+	Vua_Name: 'Vua_Do'
 }
 
 var Mau = {
-	Trang: "#ffc69e", //"#FFFFFF",
-	Den: "#b06f4e", //"#000000",
+	Trang: "255,255,255",
+	Den: "170,182,155",
 	NuocDi: "246,205,97"
 }

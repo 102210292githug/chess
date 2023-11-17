@@ -36,24 +36,39 @@
 	src="<c:url value='/template/web/JS/XacDinhDuongDi/Hau.js'/>"></script>
 <!-- <script src="path_to_your_js_directory/websocket.js"></script> -->
 <script src="<c:url value='/template/web/JS/websocket.js'/>"></script>
+<script src="<c:url value='/template/web/JS/websocket-connection.js'/>"></script>
+<script type="text/javascript">
+    const userID = '${sessionScope.userID}'; // Lấy userID từ session
+    console.log(userID); // Kiểm tra userID
+    var chessboardStr = "<c:out value='${chessboard}'/>";
+    console.log(chessboardStr);
+    // Gọi hàm openWebSocket và truyền userID
+    window.onload = function() {
+    	console.log("hew");
+        openWebSocket(userID);
+        KhoiTao2(chessboardStr);
+    };
+</script>
+
 
 
 
 </head>
-<body onload="KhoiTao()">
+<body>
 	<div id="divMain">
 		<div id="left">
 			<div id="left-top">
-				<button id="home" class="buttonTop">
+				<button id="home" class="buttonTop" onclick="redirectTo('<c:url value='/home'/>')">
 					<i style="color: rgb(104, 169, 243);" class="fa-solid fa-house"></i>CHESS
 					ONLINE
 				</button>
 				<button id="play" class="buttonTop">
-					<i class="fa-solid fa-chess"></i>PLAY</button>
+					<i class="fa-solid fa-chess"></i>PLAY
+				</button>
 				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
-				<button id="history" class="buttonTop">
+				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">
 					<i class="fa-solid fa-clock"></i>HISTORY
 				</button>
 			</div>
@@ -73,14 +88,17 @@
 				</button>
 			</div>
 		</div>
-		
-					<div id="settingsChoose">
-			  <button id="logOut" class="buttonSettingsChoose">Log out</button>
-			  <br>
-			  <button id="profile" class="buttonSettingsChoose" >Profie</button>
-			</div>
-			
-			<script>
+
+		<div id="settingsChoose">
+			<button id="logout" onclick="redirectTo('<c:url value='/logout'/>')"
+				class="buttonSettingsChoose">Log out</button>
+			<br/>
+				<button id="profile"
+					onclick="redirectTo('<c:url value='/profile'/>')"
+					class="buttonSettingsChoose">Profie</button>
+		</div>
+
+		<script>
 			  // Lấy tham chiếu đến button và đối tượng cần thay đổi
 			  const button = document.getElementById('settingsButton');
 			  const settingsChoose = document.getElementById('settingsChoose');
@@ -102,28 +120,20 @@
 
 		<div id="mid">
 			<div id="divNguoiChoiCoDen">
-				<table id="tblNguoiCoDen">
-					<tr>
-						<td><img id="iCoDen"
-							src="<c:url value='/template/web/User/User_Enb.png'/>" alt="" /></td>
-
-					</tr>
-					<tr>
-						<td id="PointCoDen">Point: 0</td>
-					</tr>
-				</table>
-
+				
 			</div>
 
 			<div id="divBanCo">
 				<div class="competitor">
-		          <img style="margin: 0px;" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
-		          <div class="contentCompetitor">
-		            <p>Competitor</p>
-		            <p style="color: red; margin-top: -15px;">Elo: 0</p> 
-		          </div>
-		          <img class="flag" src="./template/web/Icon/la-co-viet-nam-vector-1.png">
-        		</div>
+					<img style="margin: 0px;"
+						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
+						alt=""/>
+						<div class="contentCompetitor">
+							<p>Competitor</p>
+							<p style="color: red; margin-top: -15px;">Elo: 0</p>
+						</div> <img class="flag"
+						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+				</div>
 				<table id="BanCo">
 					<tr>
 						<td id="a8" onclick="Click(this.id)"><img id="ia8" /></td>
@@ -207,72 +217,46 @@
 					</tr>
 				</table>
 				<div class="competitor" style="margin-top: -10px;">
-		          <img style="margin: 0px;" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
-		          <div class="contentCompetitor">
-		            <p>Competitor</p>
-		            <p style="color: red; margin-top: -15px;">Elo: 0</p> 
-		          </div>
-		          <img class="flag" src="./template/web/Icon/la-co-viet-nam-vector-1.png">
-        		</div>
+					<img style="margin: 0px;"
+						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
+						alt=""/>
+						<div class="contentCompetitor">
+							<p>Competitor</p>
+							<p style="color: red; margin-top: -15px;">Elo: 0</p>
+						</div> <img class="flag"
+						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+				</div>
 			</div>
 
 			<div id="divNguoiChoiCoDo">
-				<table id="tblNguoiChoiCoDo">
-					<tr>
-						<td><img id="iCoDo"
-							src="<c:url value='/template/web/User/User_Dis.png'/>" alt="" /></td>
-						<!-- <td><img id="iCoDo" src="User/User_Dis.png" /></td> -->
-					</tr>
-					<tr>
-						<td id="PointCoDo">Point: 0</td>
-					</tr>
-				</table>
+			
 			</div>
 		</div>
 
 		<div id="right">
-		  <div id="historyResult">
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
-		    <p class="result">1. a1 a2</p>
+			<div id="historyResult">
+		    <ol id="myList">
+		    
+		    </ol>
 		  </div>
-		  <div id="chat">
-		    <div class="competitorChat">Hello You</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="competitorChat">Hello You</div>
-		    <div class="meChat">Hello Competitor</div>
-		    <div class="meChat">Hello Competitor</div>
-		  </div>
-		  <div id="message">
-		    <button class="messageButton">AloAlo</button>
-		    <button class="messageButton">Pro Player</button>
-		    <button class="messageButton">Ván nữa đi</button>
-		    <button class="messageButton">Không sợ không sợ</button>
-		    <button class="messageButton">Gà rứa mi</button>
-		    <button class="messageButton">I Love You</button>
-		  </div>
+			<div id="chat">
+				<div class="competitorChat">Hello You</div>
+				<div class="competitorChat">Hello You</div>
+				<div class="meChat">Hello Competitor</div>
+				<div class="competitorChat">Hello You</div>
+				<div class="meChat">Hello Competitor</div>
+				<div class="competitorChat">Hello You</div>
+				<div class="meChat">Hello Competitor</div>
+				<div class="meChat">Hello Competitor</div>
+			</div>
+			<div id="message">
+				<button class="messageButton">Alo alo</button>
+				<button class="messageButton">Pro Player</button>
+				<button class="messageButton">Ván nữa đi</button>
+				<button class="messageButton">Hòa nhé!</button>
+				<button class="messageButton">Gà rứa mi</button>
+				<button class="messageButton">I Love You</button>
+			</div>
 		</div>
 
 	</div>

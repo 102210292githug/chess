@@ -1,81 +1,102 @@
-var isClick = false, isWhite = true, Done = true, EndGame = false;
-var Location = "";
-
-var legalMoves = {
-	g1 : [ 'h3', 'f3' ],
-	b1 : [ 'c3', 'a3' ],
-	h2 : [ 'h3', 'h4' ],
-	g2 : [ 'g3', 'g4' ],
-	f2 : [ 'f3', 'f4' ],
-	e2 : [ 'e3', 'e4' ],
-	d2 : [ 'd3', 'd4' ],
-	c2 : [ 'c3', 'c4' ],
-	b2 : [ 'b3', 'b4' ],
-	a2 : [ 'a3', 'a4' ]
-};
-
-function filllegalMove(legal) {
-	legalMoves = legal;
-}
-
-function getValidMoves(pieceId) {
-	return legalMoves[pieceId];
-}
-function isMoveLegal(pieceId, move) {
-    var validMoves = getValidMoves(pieceId);
-    return validMoves ? validMoves.includes(move) : false;
-}
-
-function highlightPossibleMoves(moveIds) {
-	moveIds.forEach(function(square) {
-		document.getElementById(square).style.backgroundColor = 'yellow';
-	});
-}
-
-
-
+var isClick = false, isWhite = false, Done = true, EndGame = false;
+var Location = "00";
+var PointDo = 0, PointDen = 0;
 function KhoiTao() {
-	VeBanCoTrangDen();
-	DatCo();
-	isClick = false;
+	//VeBanCoTrangDen();
+	//DatCo();
+//	isClick = false;
+//
+//	// k dung
+//	PointDo = 0;
+//	PointDen = 0;
+//	document.getElementById("PointCoDo").innerHTML = "Point: 0";
+//	document.getElementById("PointCoDen").innerHTML = "Point: 0";
 }
-
-function WhiteOrBlack(isW) {
+function WhiteOrBlack(isW){
 	Done = isW;
-	isWhite = isW;
+	isWhite = !isW;
 }
 
+// Cờ đỏ đi trước
 function Nextturn() {
 	Done = true;
 }
-
 function Click(id) {
 	console.log(Done);
-	console.log(isWhite);
-	if (!Done || EndGame)
+	if (!Done)
 		return;
-
 	var X = id.charAt(0);
 	var Y = id.charAt(1);
 	isClick = !isClick;
-
 	if (isClick) {
-		console.log("here!");
-		if (isCoTrang(X, Y) !== isWhite) {
-			isClick = false;
+		if (isCoDo(X, Y) != isWhite) {
+			isClick = !isClick;
 			return;
 		}
-		var pieceName = GetName(id);
+	}
+	if (isClick) {
+		var Name = GetName(id);
+		Name = Name.substring(0, Name.indexOf('_'));
 		Location = id;
-		VeBanCoTrangDen();
-		var validMoves = getValidMoves(id);
-		console.log(validMoves);
-		highlightPossibleMoves(validMoves);
-		if (pieceName == "Rong")
-			isClick = false;
+
+		// Kiểm tra này là quân cờ nào để xác định đường đi
+		switch (Name) {
+		case 'Xe':
+			Xe(id);
+			break;
+
+		case 'Ma':
+			Ma(id);
+			break;
+
+		case 'Tuong':
+			Tuong(id);
+			break;
+
+		case 'Hau':
+			Hau(id);
+			break;
+
+		case 'Vua':
+			Vua(id);
+			break;
+
+		case 'Tot':
+			Tot(id);
+			break;
+
+		default:
+
+			// Không click vào ổ chứa quân cờ nào
+			isClick = !isClick;
+			break;
+		}
 	} else {
-		if (isMoveLegal(Location, id)) {
-			DiChuyen(Location, id)
+		var Name = GetName(id);
+		Name = Name.substring(0, Name.indexOf('_'));
+
+		if (DiChuyen(Location, id)) {
+			if (isWhite) {
+				PointDo += GetDiem(Name);
+				if (isChieuVua(Name) || PointDo == 880) {
+					alert("YOU WIN");
+					sendMove(Location, id);
+					endGame();
+					KhoiTao();
+				}
+				document.getElementById("PointCoDo").innerHTML = "Point: "
+						+ PointDo;
+			} else {
+				PointDen += GetDiem(Name);
+				if (isChieuVua(Name) || PointDen == 880) {
+					sendMove(Location, id);
+					endGame();
+					alert("YOU WIN");
+					KhoiTao();
+				}
+				document.getElementById("PointCoDen").innerHTML = "Point: "
+						+ PointDen;
+			}
 			Done = false;
 			sendMove(Location, id);
 		}

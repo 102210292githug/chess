@@ -91,6 +91,17 @@ class ChessRoom:
             return True
         return False
 
+    def get_board_string(self):
+        """
+        Trả về bàn cờ dưới dạng chuỗi, mỗi hàng của bàn cờ được cách nhau bởi dấu '?'
+
+        Returns:
+            str: Chuỗi biểu diễn trạng thái bàn cờ.
+        """
+        board_str = str(self.board)
+        # Chuyển đổi từ chuỗi đa dòng thành chuỗi đơn dòng với dấu '?' phân cách các hàng
+        return board_str.replace('\n', '?')
+
 
 class PlayerVsPlayerRoom(ChessRoom):
     def __init__(self, player1_id, player2_id):
