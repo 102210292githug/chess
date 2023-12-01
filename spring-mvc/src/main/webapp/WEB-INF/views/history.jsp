@@ -121,7 +121,6 @@
                             </div>
                             <img class="colorUser" alt="Player B">
                         </div>
-                    `;
 
                     // Gán dữ liệu vào các thẻ
                     historyElement.querySelector('.userA .colorUser').src = game.playerAIcon;

@@ -90,5 +90,8 @@ public class HomeController {
 		return mav;
 	}
 
-
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public ModelAndView infomation() {
+		return new ModelAndView("infomation");
+	}
 }

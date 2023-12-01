@@ -110,6 +110,23 @@ public class UserDAO {
 			throw new RuntimeException("Error updating user", e);
 		}
 	}
+	
+	public void updateUser1(String firstname, String lastname, String location, int userID) {
+		String sql = "UPDATE users SET lastname = ?, firstname = ?,  country = ? WHERE userID = ?";
+		try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+
+			stmt.setString(1, lastname);
+			stmt.setString(2,firstname);
+
+			stmt.setString(3, location);
+			stmt.setInt(4, userID);
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException("Error updating user", e);
+		}
+	}
 
 	public void deleteUser(int userID) {
 		String sql = "DELETE FROM users WHERE userID = ?";

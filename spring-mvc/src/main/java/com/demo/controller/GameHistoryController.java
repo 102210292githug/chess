@@ -28,15 +28,15 @@ public class GameHistoryController {
         Integer userID = (Integer) request.getSession().getAttribute("userID");
         System.err.println(userID);
         if (userID == null) {
-            // Trả về danh sách rỗng hoặc xử lý khác
+        	// Trả về danh sách rỗng hoặc xử lý khác
             return new ArrayList<>();
         }
 
         // Xác định xem gameHistoryService có bị null không
         
-//        if (gameHistoryService == null) {
-//            throw new RuntimeException("GameHistoryService is null");
-//        }
+//      if (gameHistoryService == null) {
+//          throw new RuntimeException("GameHistoryService is null");
+//      }
 
         return gameHistoryService.getGameHistoriesByUserId(userID);
     }

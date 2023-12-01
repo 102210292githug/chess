@@ -1,9 +1,12 @@
 package com.demo.controller;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +15,7 @@ import com.demo.model.User;
 import com.demo.service.UserService;
 
 @Controller
-public class UserController {
+public class UserController{
 
 	@Autowired
 	private UserService userService;
@@ -65,5 +68,14 @@ public class UserController {
 		}
 		return new ModelAndView("redirect:/login");
 	}
-
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.POST)
+	public ModelAndView updateProfile(@RequestParam("firstname") String firstname, 
+									  @RequestParam("lastname") String lastname, 
+									  @RequestParam("location") String location,
+									  @RequestParam("userID") int userID,
+									  HttpServletRequest request) {
+		userService.updateUser1(lastname, firstname, location, userID);
+		return new ModelAndView("redirect: /spring-mvc/profile");
+	}
 }

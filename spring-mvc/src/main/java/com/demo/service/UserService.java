@@ -21,5 +21,8 @@ public class UserService {
     	return userDAO.getUserByID(userID);
     }
     
-    
+	public void updateUser1(String lastname, String firstname, String location, int userID) {
+		// TODO Auto-generated method stub
+		userDAO.updateUser1(firstname, lastname, location, userID);
+	}
 }
