@@ -23,6 +23,7 @@
 	String location = user.getCountry();
 %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,7 +31,7 @@
 <title>CHESS ONLINE - INFOMATION</title>
 </head>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/template/web/CSS/styleInfomation.css'/>" />
+	href="<c:url value='/template/web/CSS/styleFindFriend.css'/>" />
 <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
 <script src="<c:url value='/template/web/JS/websocket.js'/>"></script>
 <link rel="icon"
@@ -108,54 +109,48 @@
             <div id="contentLeft">
                 <button class="buttonContentLeft" id="profile"><i class="fa-regular fa-user"></i>Profile</button>
                 <button class="buttonContentLeft" id="password"><i class="fa-solid fa-key"></i>Password</button>
-                <button class="buttonContentLeft" id="friend" onclick="redirectTo('<c:url value='/findFriend?friendID=-1'/>')"><i class="fa-solid fa-user-group"></i>Friend</button>
+                <button class="buttonContentLeft" id="friend"><i class="fa-solid fa-user-group"></i>Friend</button>
                 <button class="buttonContentLeft" id="more">... More</button>
             </div>
             <div id="contentRight">
                 <div id="contentRightTop">
-                    <img id="user" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
+                    <div style="display: flex;">
+                        <img id="user" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
                     <div id="info1st">
                         <p id="you"><%= username %></p>
                         <p id="elo">Elo: <%= elo %></p>
-                        
                     </div>
-                </div>
-
-                <div id="contentRightBot">
-                    <div id="contentRightBotInf">
-                        <div class="rightBotInf" id="userName">
-                            <p class="nameInfUser">Username</p>
-                            <p style="margin-left: 108px;" class="infoUser"><%= username %></p>
-                        </div>
-						<form action="/spring-mvc/profile" method="post">
-							<input type="hidden" name="userID" value="<%= Integer.parseInt(session.getAttribute("userID").toString()) %>" />
-						    <div class="rightBotInf" id="firstName"> 
-                            <p class="nameInfUser">First Name</p>                           
-                            <input style="margin: 0 0 10px 100px; width: 250px;" class="infoUser" type="text" name="firstname" value="<%= firstname %>">
-                        </div>
-	
-                        <div class="rightBotInf" id="lastName">
-                            <p class="nameInfUser">Last Name</p>
-                            <input style="margin: 0 0 10px 102px; width: 250px;" class="infoUser" class="infoUser" type="text" name="lastname" value="<%= lastname%>">
-                        </div>
-
-                        <div class="rightBotInf" id="email">
-                            <p class="nameInfUser">Email</p>
-                            <p style="margin-left: 135px;" class="infoUser"><%= email %></p>
-                           <!-- <a id="change" href="">Change</a>  -->
-                        </div>
-
-                        <div class="rightBotInf" id="location">
-                            <p class="nameInfUser">Location</p>
-                            <input style="margin-left: 115px; width: 250px;" class="infoUser" type="text" name="location" id="" value="<%= location %>">
-                        </div>
-
-                        <button type="submit" id="save">SAVE</button>
-						</form>
-
-                    </div>                    
-                </div>
-            </div>
+                    </div>
+						<form action="/spring-mvc/findFriend" method="get">
+						    <div>
+						        <input type="text" class="findFriend" id="userIDInput" name="friendID" placeholder="nhập username bạn bè">
+						        <button class="buttonFind" type="submit">Find</button>
+						    </div>
+						</form>    
+					<%
+					    Object userObject = request.getAttribute("user");
+					
+					    // Check if the "user" object is not null
+					    if (userObject != null) {
+					        // Cast the "user" object to your User class
+					        User user1 = (User) userObject;
+					%>
+					</div>
+					<div id="contentRightBot">
+					    <div class="infoFriendContainer">
+					        <div style="display: flex;">
+					            <p class="username" name="friendUsername">Username: <%= (user1 != null) ? user1.getUsername() : "" %></p>
+					            <p class="name" name="friendName">Name: <%= (user1 != null) ? (user1.getFirstname() + " " + user1.getLastname()) : "" %></p>
+					            <p class="elo" name="friendElo">Elo: <%= (user1 != null) ? Integer.toString(user1.getElo()) : "" %></p>           
+					        </div>
+					        <button class="addFriend">Add</button>
+					    </div>
+					</div>
+					
+					<%
+					    }
+					%>
+            
         </div>
     </div>
 </div> 

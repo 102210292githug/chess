@@ -22,7 +22,10 @@ public class UserService {
     }
     
 	public void updateUser1(String lastname, String firstname, String location, int userID) {
-		// TODO Auto-generated method stub
 		userDAO.updateUser1(firstname, lastname, location, userID);
+	}
+	
+	public User getUser(String username) {
+		return userDAO.getUserByUsername(username);
 	}
 }

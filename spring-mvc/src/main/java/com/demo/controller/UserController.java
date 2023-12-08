@@ -1,12 +1,9 @@
 package com.demo.controller;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -77,5 +74,17 @@ public class UserController{
 									  HttpServletRequest request) {
 		userService.updateUser1(lastname, firstname, location, userID);
 		return new ModelAndView("redirect: /spring-mvc/profile");
+	}
+	
+	@RequestMapping(value = "/findFriend", method = RequestMethod.GET)
+	public ModelAndView findFriend(@RequestParam("friendID") String friendID,
+	                               HttpServletRequest request) {
+	    User user1 = userService.getUser(friendID);
+
+	    // Assuming "user" is the object you want to pass to the redirected URL
+	    ModelAndView modelAndView = new ModelAndView("findFriend");
+	    modelAndView.addObject("user", user1);
+
+	    return modelAndView;
 	}
 }

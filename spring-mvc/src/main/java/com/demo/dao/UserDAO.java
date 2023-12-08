@@ -90,6 +90,26 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public User getUserByUsername(String username) {
+		String sql = "SELECT * FROM users WHERE username = ?";
+		try(Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+			stmt.setString(1, username);
+			try (ResultSet rs = stmt.executeQuery()){
+				if(rs.next()) {
+					User user = new User();
+					user.setUsername(rs.getString("username"));
+					user.setLastname(rs.getString("lastname"));
+					user.setFirstname(rs.getString("firstname"));
+					user.setElo(rs.getInt("Elo"));
+					return user;
+				}
+			}
+		} catch(SQLException e) {
+			throw new RuntimeException("Error finding user by username", e);
+		}
+		return null;
+	}
 
 	public void updateUser(User user) {
 		String sql = "UPDATE users SET username = ?, password = ?, Elo = ?, lastname = ?, firstname = ?, email = ?, age = ?, country = ? WHERE userID = ?";
@@ -179,4 +199,6 @@ public class UserDAO {
 		}
 		return -1;
 	}
+
+
 }

@@ -104,12 +104,6 @@ i{
     margin: 20px 0;
 }
 
-#info1st{
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .buttonContentLeft{
     display: block;
     width: 200px;
@@ -136,6 +130,8 @@ i{
 
 #contentRightTop{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 700px;
     height: 180px;
     background-color: rgb(200 200 200);
@@ -143,6 +139,33 @@ i{
     border-radius: 20px;
 }
 
+.findFriend{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    margin: 0px 20px;
+}
+
+.buttonFind{
+    height: 50px;
+    width: 75px;
+    margin: 0px 20px 0px 0px;
+    border-radius: 5px;
+    border: none;
+    background: #85cccc;
+    font-weight: bold;
+    color: white;
+}
+
+.buttonFind:hover{
+    background-color: #53d0d0;
+}
+
+#info1st{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 
 #you{
     font-size: 25px;
@@ -159,43 +182,57 @@ i{
 }
 
 #contentRightBot{
-    display: flex;
+    display: block;
     height: 400px;
     width: 730px;
     background-color: rgb(200 200 200);
     margin-top: 10px;
     border-radius: 20px;
-    justify-content: center;
-    align-items: center;
 }
 
 input{
     border-radius: 5px;
     border: none;
     background-color: #a3a2a2;
-    padding: 0px 10px;
 }
 
-#contentRightBotInf{
+.infoFriendContainer{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
     width: auto;
-    height: auto;
-    margin: 50px;
+    background-color: #a3a2a2;
+    margin: 20px;
+    border-radius: 10px;
 }
 
-.rightBotInf{
-    display: flex;
+.name, .username, .elo{
+    font-weight: bold;
+    margin: 0px 20px;
 }
 
-.infoUser{
-    /* margin-left: 100px; */
-    height: 30px;
-    font-family: 'Times New Roman', Times, serif;
+.username{
+    color: #795548;
 }
 
-.nameInfUser{
-    font-family: fantasy;
+.name{
+    color: maroon;
+}
+
+.elo{
+    color: red;
+}
+
+.addFriend{
+    height: 40px;
+    width: 65px;
+    margin: 0px 20px 0px 0px;
+    border-radius: 5px;
+    border: none;
+    background: #85cccc;
+    font-weight: bold;
+    color: white;
 }
 
 #save{

@@ -94,4 +94,9 @@ public class HomeController {
 	public ModelAndView infomation() {
 		return new ModelAndView("infomation");
 	}
+	
+//	@RequestMapping(value = "/findFriend", method = RequestMethod.GET)
+//	public ModelAndView findFriend() {
+//		return new ModelAndView("findFriend");
+//	}
 }
