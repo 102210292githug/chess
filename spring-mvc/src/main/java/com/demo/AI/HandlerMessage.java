@@ -103,4 +103,22 @@ public class HandlerMessage {
         // Phân tích trận đấu
         roomManager.analyzeGame(gameID);
     }
+
+	public static boolean Check(int gameID) {
+		return roomManager.CheckIsValidGame(gameID);
+	}
+
+	public static void PushGameIN_PROGRESS(int gameID, int player1id, int player2id, String movelist) {
+		// TODO Auto-generated method stub
+		roomManager.addRoom(gameID, 0, player1id, player2id, movelist);
+		userGameMap.put(player1id, gameID);
+		if(player2id != 0) userGameMap.put(player2id, gameID);
+	}
+
+	public static String getLegal(int gameID) {
+		return roomManager.getLegal(gameID);
+	}
+	
+	
+	
 }

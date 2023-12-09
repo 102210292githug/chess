@@ -2,10 +2,9 @@
 var socket;
 
 function openWebSocket(userID) {
-	// KhoiTao();
+	KhoiTao();
 	WhiteOrBlack(true);
-	socket = new WebSocket("ws://localhost:8080/spring-mvc/websocket?userID="
-			+ userID);
+	socket = new WebSocket("ws://localhost:8080/spring-mvc/websocket?userID=" + userID);
 	console.log(userID);
 	socket.onopen = function() {
 		console.log("WebSocket connection established");
@@ -80,4 +79,19 @@ function addMoveToList(move) {
     listItem.textContent = move;
 
     list.appendChild(listItem);
+}
+
+function extractMoves(data) {
+	  let moves = data.replace(/[\[\]]/g, '').split(', ');
+	  return moves;
+}
+
+
+function RefillMoves(Moves){
+	data = extractMoves(Moves);
+	for (const move of data) {
+		console.log(move);
+        handleOpponentMove(move[0] + move[1], move[2] + move[3]);
+        addMoveToList(move);
+    }
 }

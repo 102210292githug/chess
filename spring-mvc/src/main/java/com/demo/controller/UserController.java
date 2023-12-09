@@ -12,7 +12,7 @@ import com.demo.model.User;
 import com.demo.service.UserService;
 
 @Controller
-public class UserController{
+public class UserController {
 
 	@Autowired
 	private UserService userService;
@@ -65,7 +65,6 @@ public class UserController{
 		}
 		return new ModelAndView("redirect:/login");
 	}
-	
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public ModelAndView updateProfile(@RequestParam("firstname") String firstname, 
 									  @RequestParam("lastname") String lastname, 

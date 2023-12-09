@@ -106,7 +106,7 @@
         </div>
         <div id="content">
             <div id="contentLeft">
-                <button class="buttonContentLeft" id="profile"><i class="fa-regular fa-user"></i>Profile</button>
+                <button class="buttonContentLeft" id="profile" onclick="redirectTo('<c:url value='/profile'/>')"><i class="fa-regular fa-user"></i>Profile</button>
                 <button class="buttonContentLeft" id="password"><i class="fa-solid fa-key"></i>Password</button>
                 <button class="buttonContentLeft" id="friend" onclick="redirectTo('<c:url value='/findFriend?friendID=-1'/>')"><i class="fa-solid fa-user-group"></i>Friend</button>
                 <button class="buttonContentLeft" id="more">... More</button>

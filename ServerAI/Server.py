@@ -1,4 +1,5 @@
 import socket
+import re
 
 from rooms.RoomManager import RoomManager
 
@@ -47,6 +48,49 @@ class ChessClient:
                         response = "Invalid room ID"
                 elif value[0] == "get":
                     response = room_manager.get_board_string_for_room(value[1])
+                elif value[0] == "Check":
+                    room_pvp = self.room_manager.get_pvp_room(room_id)
+                    room_pvc = self.room_manager.get_pvc_room(room_id)
+                    if room_pvc or room_pvp:
+                        response = "have"
+                    else:
+                        response = "not-have"
+                elif value[0] == "Legal":
+                    room_id = value[1]
+                    room_pvp = self.room_manager.get_pvp_room(room_id)
+                    room_pvc = self.room_manager.get_pvc_room(room_id)
+                    if self.room_manager.list_pvp_rooms().count(value[1]):
+                        legal_moves = room_pvp.get_legal_moves()
+                        response = str(legal_moves)
+                    if self.room_manager.list_pvc_rooms().count(value[1]):
+                        legal_moves = room_pvc.get_legal_moves()
+                        response = str(legal_moves)
+                elif value[0] == "Add":
+                    # Tách phần không phải nước đi
+                    non_move_parts = data.split()[:5]
+
+                    # Tách các nước đi sử dụng biểu thức chính quy
+                    moves_str = re.search(r'\[(.*?)\]', data).group(1)
+                    moves = moves_str.split(', ')
+                    mode = non_move_parts[1].split('=')[-1]
+                    pid1 = non_move_parts[2]
+                    pid2 = non_move_parts[3]
+                    room_id = non_move_parts[4]
+                    if mode == '0':
+                        self.room_manager.create_player_vs_computer_room(pid1, room_id)
+                        room_pvc = self.room_manager.get_pvc_room(room_id)
+                        if moves[-1] != '':
+                            for move in moves:
+                                move = move.strip()
+                                room_pvc.make_move(move)
+                    else:
+                        self.room_manager.create_player_vs_player_room(pid1, pid2, room_id)
+                        room_pvp = self.room_manager.get_pvc_room(room_id)
+                        if moves[-1] != '':
+                            for move in moves:
+                                move = move.strip()
+                                room_pvp.make_move(move)
+                    response = "Done!"
                 else:
                     response = "Invalid command"
 

@@ -90,26 +90,6 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
-	public User getUserByUsername(String username) {
-		String sql = "SELECT * FROM users WHERE username = ?";
-		try(Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
-			stmt.setString(1, username);
-			try (ResultSet rs = stmt.executeQuery()){
-				if(rs.next()) {
-					User user = new User();
-					user.setUsername(rs.getString("username"));
-					user.setLastname(rs.getString("lastname"));
-					user.setFirstname(rs.getString("firstname"));
-					user.setElo(rs.getInt("Elo"));
-					return user;
-				}
-			}
-		} catch(SQLException e) {
-			throw new RuntimeException("Error finding user by username", e);
-		}
-		return null;
-	}
 
 	public void updateUser(User user) {
 		String sql = "UPDATE users SET username = ?, password = ?, Elo = ?, lastname = ?, firstname = ?, email = ?, age = ?, country = ? WHERE userID = ?";
@@ -124,23 +104,6 @@ public class UserDAO {
 			stmt.setInt(7, user.getAge());
 			stmt.setString(8, user.getCountry());
 			stmt.setInt(9, user.getUserID());
-
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			throw new RuntimeException("Error updating user", e);
-		}
-	}
-	
-	public void updateUser1(String firstname, String lastname, String location, int userID) {
-		String sql = "UPDATE users SET lastname = ?, firstname = ?,  country = ? WHERE userID = ?";
-		try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-
-			stmt.setString(1, lastname);
-			stmt.setString(2,firstname);
-
-			stmt.setString(3, location);
-			stmt.setInt(4, userID);
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -199,6 +162,39 @@ public class UserDAO {
 		}
 		return -1;
 	}
+	public void updateUser1(String firstname, String lastname, String location, int userID) {
+		String sql = "UPDATE users SET lastname = ?, firstname = ?,  country = ? WHERE userID = ?";
+		try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 
+			stmt.setString(1, lastname);
+			stmt.setString(2,firstname);
+
+			stmt.setString(3, location);
+			stmt.setInt(4, userID);
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException("Error updating user", e);
+		}
+	}
+	public User getUserByUsername(String username) {
+		String sql = "SELECT * FROM users WHERE username = ?";
+		try(Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+			stmt.setString(1, username);
+			try (ResultSet rs = stmt.executeQuery()){
+				if(rs.next()) {
+					User user = new User();
+					user.setUsername(rs.getString("username"));
+					user.setLastname(rs.getString("lastname"));
+					user.setFirstname(rs.getString("firstname"));
+					user.setElo(rs.getInt("Elo"));
+					return user;
+				}
+			}
+		} catch(SQLException e) {
+			throw new RuntimeException("Error finding user by username", e);
+		}
+		return null;
+	}
 }

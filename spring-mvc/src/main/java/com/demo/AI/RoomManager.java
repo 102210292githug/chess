@@ -8,6 +8,7 @@ import com.demo.model.Game;
 import com.demo.model.Move;
 import com.demo.model.Game.GameOutcome;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,12 @@ public class RoomManager {
 			connection.sendMessage("createGame mode=" + mode + " " + player1ID + " " + player2ID + " " + gameId);
 			activeGames.put(gameId, connection);
 			games.put(gameId, newGame);
+			if(mode == 0) {
+				ServerAI.updatePVE(connection, +1);
+			}
+			else {
+				ServerAI.updatePVP(connection, +1);
+			}
 		}
 		
 		return gameId;
@@ -61,12 +68,15 @@ public class RoomManager {
 						game.setOutcome(Game.GameOutcome.LOSE);
 					}
 					gameDAO.updateGame(game);
+					if(game.getType() == 0) ServerAI.updatePVE(connection, -1);
+					else ServerAI.updatePVP(connection, -1);
 				}
 				res = parse.toString();
 				System.err.println(res);
 				return res;
 			} catch (IOException e) {
-				
+				ServerAI.removeAvailablePythonServer(connection);
+				moveDAO.deleteLastMoveIfOdd(gameId);
 				e.printStackTrace();
 			}
 		}
@@ -76,9 +86,9 @@ public class RoomManager {
 	public void removeGame(int gameId, GameOutcome outcome) {
 		Game game = games.get(gameId);
 		if (game != null) {
-			game.setStatus(1); // Assuming 1 means completed
+			game.setStatus(1);
 			game.setOutcome(outcome);
-			gameDAO.updateGame(game); // Update game in the database
+			gameDAO.updateGame(game);
 			activeGames.remove(gameId);
 			games.remove(gameId);
 		}
@@ -93,40 +103,32 @@ public class RoomManager {
 	}
 
 	public int createRoomWithAI(int userID) {
-		// TODO Auto-generated method stub
 		try {
 			return createGame(0, userID, 0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return -1;
 	}
 
 	public int createRoomWithPlayer(int userID, int userID_oth) {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		try {
 			return createGame(0, userID, userID_oth);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return -1;
 	}
 
 	public void requestDraw(int gameID, int userID) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void resignGame(int gameID, int userID) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void analyzeGame(int gameID) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -173,7 +175,7 @@ public class RoomManager {
 		}
 
 	}
-
+	
 	public String getBoard(int gameID) {
 		// TODO Auto-generated method stub
 		ClientConnection connection = activeGames.get(gameID);
@@ -185,5 +187,79 @@ public class RoomManager {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public boolean CheckIsValidGame(int gameID) {
+		ClientConnection connection = activeGames.get(gameID);
+		System.err.println("CheckIsValidGame" + gameID);
+		System.err.println(connection);
+		if(connection != null) {
+			try {
+				String res = connection.sendMessage("Check " + gameID);
+				return res.equals("have");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public String parseMoves(String data) {
+        Map<String, List<String>> movesMap = new HashMap<>();
+        data = data.substring(1, data.length() - 1); // Loại bỏ dấu ngoặc nhọn ở đầu và cuối
+
+        String[] entries = data.split(", '(?=[A-Z]@)"); // Tách mỗi cặp key-value
+
+        for (String entry : entries) {
+            String[] keyValue = entry.split(": "); // Tách key và value
+            String key = keyValue[0].split("@")[1].replaceAll("[\\{'\\}]", "").trim(); // Lấy vị trí hiện tại
+            String[] movesArray = keyValue[1].replaceAll("[\\[\\]' ]", "").split(","); // Lấy các ô có thể đến
+
+            List<String> destinations = new ArrayList<>();
+            for (String move : movesArray) {
+                destinations.add(move.substring(2));
+            }
+            movesMap.put(key, destinations);
+        }
+
+        return ("" + movesMap);
+    }
+	
+	public String getLegal(int gameID) {
+		ClientConnection connection = activeGames.get(gameID);
+		if(connection != null) {
+			try {
+				String res = connection.sendMessage("Legal " + gameID);
+				System.err.println(res);
+				res = parseMoves(res);
+				System.err.println(res);
+				return res;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public void addRoom(int gameId, int mode, int player1ID, int player2ID, String moves) {
+		// TODO Auto-generated method stub
+		ClientConnection connection = ServerAI.getAvailablePythonServer();
+		if (connection != null) {
+			try {
+				connection.sendMessage("Add mode=" + mode + " " + player1ID + " " + player2ID + " " + gameId + " " + moves);
+				System.err.println("Add mode=" + mode + " " + player1ID + " " + player2ID + " " + gameId + " " + moves);
+				if(mode == 1) ServerAI.updatePVE(connection, +1);
+				else ServerAI.updatePVP(connection, +1);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			activeGames.put(gameId, connection);
+			games.put(gameId, gameDAO.getGame(gameId));
+			
+		}
+		
 	}
 }

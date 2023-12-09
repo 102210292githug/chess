@@ -33,7 +33,7 @@ public class MoveDAO {
                     move.setPlayerID(rs.getInt("playerID"));
                     move.setMoveNotation(rs.getString("moveNotation"));
                     move.setMoveNumber(rs.getInt("moveNumber"));
-                    move.setMoveQuality(Move.MoveQuality.valueOf(rs.getString("moveQuality")));
+                    move.setMoveQuality(rs.getString("moveQuality"));
                     move.setBetterMove(rs.getString("betterMove"));
                     moves.add(move);
                 }
@@ -51,20 +51,12 @@ public class MoveDAO {
         System.err.println(move);
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-        	//System.err.println(move);
             stmt.setInt(1, move.getGameID());
-            //System.err.println("1");
             stmt.setInt(2, move.getPlayerID());
-            //System.err.println("2");
             stmt.setString(3, move.getMoveNotation());
-            //System.err.println("3");
             stmt.setInt(4, move.getMoveNumber());
-            //System.err.println("4");
-            //System.err.println(move.getMoveQuality().toString());
             stmt.setString(5, move.getMoveQuality().toString());
-            //System.err.println("5");
             stmt.setString(6, move.getBetterMove());
-            //System.err.println("6");
             stmt.executeUpdate();
           System.err.println("addmove done");
         } catch (SQLException e) {
@@ -105,4 +97,38 @@ public class MoveDAO {
             throw new RuntimeException("Error deleting move", e);
         }
     }
+ // Method to count the number of moves for a given game ID
+    public int countMovesByGameId(int gameId) {
+        String sql = "SELECT COUNT(*) FROM moves WHERE gameID = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, gameId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error counting moves by game ID", e);
+        }
+        return 0;
+    }
+ // Method to delete the last move of a game if the move count is odd
+    public void deleteLastMoveIfOdd(int gameId) {
+        int moveCount = countMovesByGameId(gameId);
+        if (moveCount % 2 != 0) { // Check if move count is odd
+            String sql = "DELETE FROM moves WHERE moveID = (SELECT moveID FROM moves WHERE gameID = ? ORDER BY moveID DESC LIMIT 1)";
+            try (Connection conn = getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setInt(1, gameId);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error deleting last move", e);
+            }
+        }
+    }
+
 }

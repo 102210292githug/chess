@@ -40,13 +40,17 @@
 <script type="text/javascript">
     const userID = '${sessionScope.userID}'; // Lấy userID từ session
     console.log(userID); // Kiểm tra userID
-    var chessboardStr = "<c:out value='${chessboard}'/>";
-    console.log(chessboardStr);
-    // Gọi hàm openWebSocket và truyền userID
+    var Moves = "<c:out value ='${prevMove}'/>";
+    console.log(Moves);
+    var legal = "<c:out value = '${legal}'/>";
+    console.log(legal);
     window.onload = function() {
-    	console.log("hew");
         openWebSocket(userID);
-        KhoiTao2(chessboardStr);
+        KhoiTao();
+        RefillMoves(Moves);
+        if (legal.length > 5) {
+            parseDataString(legal);
+        }
     };
 </script>
 

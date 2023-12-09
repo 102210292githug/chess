@@ -15,14 +15,14 @@ public class Move {
         public String toString() {
             switch (this) {
                 case GOOD:
-                    return "Good Move";
+                    return "GOOD";
                 case BAD:
-                    return "Bad Move";
+                    return "BAD";
                 case NEUTRAL:
-                    return "Neutral Move";
+                    return "NEUTRAL";
                 default:
-                    return "None";
-            }
+                    return "NONE";
+            }	
         }
     }
 
@@ -89,8 +89,12 @@ public class Move {
         return moveQuality;
     }
 
-    public void setMoveQuality(MoveQuality moveQuality) {
-        this.moveQuality = moveQuality;
+    public void setMoveQuality(String moveQualityStr) {
+        try {
+            this.moveQuality = MoveQuality.valueOf(moveQualityStr.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            this.moveQuality = MoveQuality.NONE;
+        }
     }
 
     public String getBetterMove() {
@@ -104,14 +108,6 @@ public class Move {
     // toString method for debugging purposes
     @Override
     public String toString() {
-        return "Move{" +
-                "moveID=" + moveID +
-                ", gameID=" + gameID +
-                ", playerID=" + playerID +
-                ", moveNotation='" + moveNotation + '\'' +
-                ", moveNumber=" + moveNumber +
-                ", moveQuality=" + moveQuality +
-                ", betterMove='" + betterMove + '\'' +
-                '}';
+        return moveNotation;
     }
 }

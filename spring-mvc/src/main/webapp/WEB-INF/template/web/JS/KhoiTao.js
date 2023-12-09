@@ -49,21 +49,21 @@ function DatCo() {
 
 function DatCo2(boardstr) {
     // Mảng ánh xạ ký tự sang đường dẫn hình ảnh quân cờ
-    var pieceImages = {
-        'r': CoDen.Xe, 'n': CoDen.Ma, 'b': CoDen.Tuong, 'q': CoDen.Hau, 'k': CoDen.Vua, 'p': CoDen.Tot,
-        'R': CoTrang.Xe, 'N': CoTrang.Ma, 'B': CoTrang.Tuong, 'Q': CoTrang.Hau, 'K': CoTrang.Vua, 'P': CoTrang.Tot,
-        '.': CoDen.Rong // Ô trống
-    };
-
-    var rows = boardstr.split('?');
-    for (var i = 0; i < rows.length; i++) {
-        var cells = rows[i].split(' ');
-        for (var j = 0; j < cells.length; j++) {
-            var cellId = "i" + String.fromCharCode('a'.charCodeAt(0) + j) + (8 - i);
-            var pieceChar = cells[j];
-            var imgSrc = pieceImages[pieceChar] || CoDen.Rong; // Sử dụng hình ảnh rỗng nếu không tìm thấy ký tự
-            document.getElementById(cellId).src = imgSrc;
-        }
-    }
+//    var pieceImages = {
+//        'r': CoDen.Xe, 'n': CoDen.Ma, 'b': CoDen.Tuong, 'q': CoDen.Hau, 'k': CoDen.Vua, 'p': CoDen.Tot,
+//        'R': CoTrang.Xe, 'N': CoTrang.Ma, 'B': CoTrang.Tuong, 'Q': CoTrang.Hau, 'K': CoTrang.Vua, 'P': CoTrang.Tot,
+//        '.': CoDen.Rong // Ô trống
+//    };
+//
+//    var rows = boardstr.split('?');
+//    for (var i = 0; i < rows.length; i++) {
+//        var cells = rows[i].split(' ');
+//        for (var j = 0; j < cells.length; j++) {
+//            var cellId = "i" + String.fromCharCode('a'.charCodeAt(0) + j) + (8 - i);
+//            var pieceChar = cells[j];
+//            var imgSrc = pieceImages[pieceChar] || CoDen.Rong; // Sử dụng hình ảnh rỗng nếu không tìm thấy ký tự
+//            document.getElementById(cellId).src = imgSrc;
+//        }
+//    }
 }
 

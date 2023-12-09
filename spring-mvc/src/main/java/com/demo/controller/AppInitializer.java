@@ -17,9 +17,8 @@ public class AppInitializer implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        // Clean up resources, stop the server, etc.
         if (serverThread != null && serverThread.isAlive()) {
-            serverThread.interrupt(); // Or other methods to stop your server
+            serverThread.interrupt();
         }
     }
 }
