@@ -108,6 +108,7 @@ i{
 	display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 50px;
 }
 
 .buttonContentLeft{
@@ -137,10 +138,21 @@ i{
 #contentRightTop{
     display: flex;
     width: 700px;
-    height: 180px;
+    height: 220px;
     background-color: rgb(200 200 200);
     padding-left: 30px;
     border-radius: 20px;
+}
+
+#formAvt{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chooseFile{
+	margin: 15px;
+    width: 175px;
 }
 
 
@@ -153,14 +165,32 @@ i{
     color: red;
 }
 
+#avtUser{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #user{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 70px;
+}
+
+.btn-img{
+    font-weight: bold;
+    width: 115px;
+    font-size: 12px;
+    border-radius: 10px;
+    border: none;
+    //margin: 5px 0px 20px 0px;
 }
 
 #contentRightBot{
     display: flex;
-    height: 400px;
+    height: 360px;
     width: 730px;
     background-color: rgb(200 200 200);
     margin-top: 10px;

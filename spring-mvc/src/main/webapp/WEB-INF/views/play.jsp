@@ -69,7 +69,7 @@
 				<button id="play" class="buttonTop">
 					<i class="fa-solid fa-chess"></i>PLAY
 				</button>
-				<button id="analysis" class="buttonTop">
+				<button id="analysis" onclick="redirectTo('<c:url value='/analys'/>')" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
 				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">

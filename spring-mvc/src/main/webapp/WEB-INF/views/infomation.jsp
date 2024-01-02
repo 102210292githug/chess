@@ -113,7 +113,15 @@
             </div>
             <div id="contentRight">
                 <div id="contentRightTop">
-                    <img id="user" src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png" alt="">
+                    <div id="avtUser">
+                        <img id="user" src="./template/web/avt/<%= userID %>.jpg" alt="your image" />
+						<form id="formAvt" method="post" action="fileuploadservlet" enctype="multipart/form-data">
+    						<input id="chooseFile" type="file" name="file" accept="image/*" required/>
+    						<input type="hidden" name="user" value="<%= userID %>"/>
+    						<button class="btn-img" type="submit">Change Avatar</button> 
+						</form>
+                     
+                    </div>
                     <div id="info1st">
                         <p id="you"><%= username %></p>
                         <p id="elo">Elo: <%= elo %></p>
@@ -160,4 +168,24 @@
     </div>
 </div> 
 </body>
+<script>
+    function chooseFile() {
+        // Tạo một thẻ input để chọn file
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        
+        // Khi người dùng chọn file, thực hiện hàm xử lý
+        fileInput.onchange = function (evt) {
+            const [file] = fileInput.files;
+            if (file) {
+                // Hiển thị hình ảnh đã chọn
+                user.src = URL.createObjectURL(file);
+            }
+        };
+
+        // Kích hoạt sự kiện click trên input để chọn file
+        fileInput.click();
+    }
+</script>
 </html>

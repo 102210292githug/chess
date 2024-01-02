@@ -35,6 +35,8 @@ public class HomeController {
 		return new ModelAndView("infomation");
 	}
 	
+	
+	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		HttpSession session = request.getSession(false); // Get the current session if it exists, but don't create a new one
