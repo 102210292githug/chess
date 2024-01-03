@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/demo/AI/ClientConnection.java=UTF-8
+encoding//src/main/java/com/demo/AI/HandlerMessage.java=UTF-8
+encoding//src/main/java/com/demo/AI/RoomManager.java=UTF-8
+encoding//src/main/java/com/demo/controller/GameHistoryController.java=UTF-8
+encoding//src/main/java/com/demo/controller/HomeController.java=UTF-8
+encoding//src/main/java/com/demo/service/FriendshipService.java=UTF-8
+encoding//src/main/java/com/demo/service/GameService.java=UTF-8
+encoding//src/main/java/com/demo/service/MoveService.java=UTF-8
+encoding//src/main/webapp/WEB-INF/template/admin/style.css=UTF-8
