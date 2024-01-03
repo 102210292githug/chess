@@ -97,8 +97,3 @@ function DiChuyen(id, idMoi){
 	document.getElementById("i" + id).src = CoDen.Rong;
 	return true;
 }	
-
-function handleOpponentMove(id, idMoi){
-	document.getElementById("i" + idMoi).src = document.getElementById("i" + id).src;
-	document.getElementById("i" + id).src = CoDen.Rong;
-}	

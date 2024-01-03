@@ -1,31 +1,31 @@
 var imported = document.createElement('script');
-imported.src = 'template/web/JS/Sources.js';
+imported.src = 'JS/Sources.js';
 document.head.appendChild(imported);
 
 //
 function VeBanCoTrangDen(){
 	for(var i = 1; i < 9; i++){
 		for(var j = 1; j < 9; j++){
-			document.getElementById(i.toString() + j.toString()).style.backgroundColor = "#ffc69e";
+			document.getElementById(i.toString() + j.toString()).style.backgroundColor = "rgb(255,255,255)";
 			if(i % 2 != 0 ){
 				if(j % 2 == 0)
-					document.getElementById(i.toString() + j.toString()).style.backgroundColor = "#b06f4e";
+					document.getElementById(i.toString() + j.toString()).style.backgroundColor = "rgb(170,182,155)";
 			}else{
 				if(j % 2 != 0)
-					document.getElementById(i.toString() + j.toString()).style.backgroundColor = "#b06f4e";
+					document.getElementById(i.toString() + j.toString()).style.backgroundColor = "rgb(170,182,155)";
 			}
 		}
 	}
 }
 // Đặt các quân cờ
 function DatCo(){
-	for( i = 1; i < 9; i++){
+	for( i = 3; i < 7; i++){
 		for(j = 1; j < 9; j++){
-			document.getElementById("i" + i.toString() + j.toString()).src = "template/web/QuanCo/Rong.png";
+			document.getElementById("i" + i.toString() + j.toString()).src = "QuanCo/Rong.png";
 		}
 	}
 	
-	// Quân trắng
+	// Quân đen
 	for(var i = 1; i < 9; i++){
 		document.getElementById("i7" + i).src = CoDen.Tot;
 	}
@@ -38,7 +38,7 @@ function DatCo(){
 	document.getElementById("i87").src = CoDen.Ma;
 	document.getElementById("i88").src = CoDen.Xe;
 	
-	// Quân đen
+	// Quân đỏ
 	for(var i = 1; i < 9; i++){
 		document.getElementById("i2" + i).src = CoDo.Tot;
 	}

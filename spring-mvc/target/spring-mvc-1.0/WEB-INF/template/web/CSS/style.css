@@ -5,10 +5,6 @@ body{
 	font-family: 'Times New Roman', Times, serif;
 }
 
-button:hover{
-	cursor: pointer;
-}
-
 #left{
 	display: flex;
 	flex-direction: column;
@@ -82,20 +78,12 @@ i{
 	font-size: 25px;
 }
 
-#playOnline, #playComputer{
+#playOnl, #computer{
 	background-color: #87fb7f;
-}
-
-#playOnline:hover, #playComputer:hover{
-	background-color: #51fc45;
 }
 
 #playFriend{
 	background-color: rgb(145, 247, 247);
-}
-
-#playFriend:hover{
-	background-color: rgb(79, 255, 255);
 }
 
 /*CSS Div Main*/
@@ -155,6 +143,9 @@ i{
 	width: 26%;
 	height:100%;
 }
+#PointCoDen {
+	
+}
 
 #PointCoDo {
 	color:#FF0004;
@@ -172,7 +163,7 @@ i{
 	height: 70px;
 	width: 70px;
 	border-style:solid;
-	border-color: #f3cdca;
+	border-color: #AAB69B;
 	border-collapse:collapse;
 	border-width: 2px;
 }
@@ -181,7 +172,7 @@ i{
   border-width: 2px;
   border-collapse: collapse;
   border-style: solid;
-  border-color: #c51414;
+  border-color: #1BA39C;
 }
 
 img{

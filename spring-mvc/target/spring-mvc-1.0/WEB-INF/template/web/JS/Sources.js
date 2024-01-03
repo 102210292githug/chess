@@ -1,11 +1,11 @@
 var CoDen = {
-	Tot: 'template/web/QuanCo/Tot_Den.png',
-	Tuong: 'template/web/QuanCo/Tuong_Den.png',
-	Ma: 'template/web/QuanCo/Ma_Den.png',
-	Xe: 'template/web/QuanCo/Xe_Den.png',
-	Hau: 'template/web/QuanCo/Hau_Den.png',
-	Vua: 'template/web/QuanCo/Vua_Den.png',
-	Rong: "template/web/QuanCo/Rong.png",
+	Tot: 'QuanCo/Tot_Den.png',
+	Tuong: 'QuanCo/Tuong_Den.png',
+	Ma: 'QuanCo/Ma_Den.png',
+	Xe: 'QuanCo/Xe_Den.png',
+	Hau: 'QuanCo/Hau_Den.png',
+	Vua: 'QuanCo/Vua_Den.png',
+	Rong: "QuanCo/Rong.png",
 	// Name
 	Tot_Name: 'Tot_Den',
 	Tuong_Name: 'Tuong_Den',
@@ -16,13 +16,13 @@ var CoDen = {
 }
 
 var CoDo = {
-	Tot: 'template/web/QuanCo/Tot_Do.png',
-	Tuong: 'template/web/QuanCo/Tuong_Do.png',
-	Ma: 'template/web/QuanCo/Ma_Do.png',
-	Xe: 'template/web/QuanCo/Xe_Do.png',
-	Hau: 'template/web/QuanCo/Hau_Do.png',
-	Vua: 'template/web/QuanCo/Vua_Do.png',
-	Rong: "template/web/QuanCo/Rong.png",
+	Tot: 'QuanCo/Tot_Do.png',
+	Tuong: 'QuanCo/Tuong_Do.png',
+	Ma: 'QuanCo/Ma_Do.png',
+	Xe: 'QuanCo/Xe_Do.png',
+	Hau: 'QuanCo/Hau_Do.png',
+	Vua: 'QuanCo/Vua_Do.png',
+	Rong: "QuanCo/Rong.png",
 	// Name
 	Tot_Name: 'Tot_Do',
 	Tuong_Name: 'Tuong_Do',

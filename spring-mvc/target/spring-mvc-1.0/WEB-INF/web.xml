@@ -3,15 +3,12 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-    <display-name>Demo</display-name>
+    <display-name>spring-mvc</display-name>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-	<listener>
-    	<listener-class>com.demo.controller.AppInitializer</listener-class>
-	</listener>
-	
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -35,8 +32,8 @@
     </servlet-mapping>
 
      <session-config>
-        <!-- <tracking-mode>COOKIE</tracking-mode> -->
-    </session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config> 
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
