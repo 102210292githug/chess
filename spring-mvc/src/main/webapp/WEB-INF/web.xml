@@ -28,6 +28,11 @@
 			<param-value>/WEB-INF/context/dispatcher-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- Add the multipart resolver configuration here -->
+        <multipart-config>
+            <max-file-size>10485760</max-file-size> <!-- 10 MB -->
+            <!-- Other multipart configuration if needed -->
+        </multipart-config>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>

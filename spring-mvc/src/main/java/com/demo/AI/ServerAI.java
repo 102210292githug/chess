@@ -14,32 +14,6 @@ public class ServerAI {
     private static ConcurrentLinkedQueue<ClientConnection> availablePythonServers = new ConcurrentLinkedQueue<>();
     private static ConcurrentHashMap<ClientConnection, ServerStatus> serverStatusMap = new ConcurrentHashMap<>();
 
-//    public static void main(String[] args) {
-//        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-//            System.out.println("Server is listening on port " + PORT);
-//
-//            while (true) {
-//                Socket socket = serverSocket.accept();
-//                String newServerName = socket.getInetAddress().getHostAddress();
-//                System.out.println("Connected to: " + newServerName);
-//
-//                ClientConnection connection = new ClientConnection(socket);
-//                addAvailablePythonServer(connection);
-//                
-//                // Create and add new server status
-//                ServerStatus newServer = new ServerStatus();
-//                newServer.setServerName(newServerName);
-//                newServer.setConnection(connection);
-//                newServer.setGamePVE(0);
-//                newServer.setGamePVP(0);
-//                newServer.setStatus("connected");
-//                serverStatusMap.put(connection, newServer);
-//            }
-//        } catch (IOException ex) {
-//            System.out.println("Server exception: " + ex.getMessage());
-//            ex.printStackTrace();
-//        }
-//    }
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server is listening on port " + PORT);
