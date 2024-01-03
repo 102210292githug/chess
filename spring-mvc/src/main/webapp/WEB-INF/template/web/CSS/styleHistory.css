@@ -1,46 +1,46 @@
-body{
-	margin:0px;
+body {
+	margin: 0px;
 	padding: 0px;
-	background-color:#EDEDEE;
+	background-color: #EDEDEE;
 	font-family: 'Times New Roman', Times, serif;
 }
 
-#divMain{
-    height: 100%;
-    width: auto;
-    display: flex;
+#divMain {
+	height: 100%;
+	width: auto;
+	display: flex;
 }
 
-button:hover{
+button:hover {
 	cursor: pointer;
 }
 
-#left{
+#left {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	width: 200px;
-    height: 730px;
+	height: 730px;
 	background-color: rgb(160, 158, 158);
 }
 
-#settingsChoose{
+#settingsChoose {
 	display: none;
 	position: absolute;
-    margin-top: 650px;
-    margin-left: 200px;
-    z-index: 1;
+	margin-top: 650px;
+	margin-left: 200px;
+	z-index: 1;
 }
 
-.buttonSettingsChoose{
-    font-size: 20px;
-    width: 135px;
-    border: none;
-    margin: 3px;
-    background-color: #c6c2c2;
+.buttonSettingsChoose {
+	font-size: 20px;
+	width: 135px;
+	border: none;
+	margin: 3px;
+	background-color: #c6c2c2;
 }
 
-.buttonTop{
+.buttonTop {
 	display: block;
 	width: 200px;
 	height: 50px;
@@ -48,14 +48,14 @@ button:hover{
 	border: none;
 	background-color: rgb(192, 190, 190);
 	font-weight: bolder;
-    font-size: 15px;
+	font-size: 15px;
 }
 
-#home{
+#home {
 	color: red;
 }
 
-.buttonBot{
+.buttonBot {
 	display: block;
 	width: 200px;
 	height: 30px;
@@ -64,146 +64,168 @@ button:hover{
 	background-color: rgb(192, 190, 190);
 }
 
-.buttonTop:hover, .buttonBot:hover{
-    background-color: rgb(157, 156, 156);
+.buttonTop:hover, .buttonBot:hover {
+	background-color: rgb(157, 156, 156);
 }
 
-i{
+i {
 	margin: -10px 5%;
 	width: 20px;
 	height: auto;
 }
 
-#contentSettings{
-    display: flex;
-    flex-direction: column;
-    margin-left: 60px;
+#contentSettings {
+	display: flex;
+	flex-direction: column;
+	margin-left: 60px;
 }
 
-#settings{
-    display: flex;
-    font-size: 25px;
-    font-weight: bolder;
-    height: auto;
-    width: 220px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+#settings {
+	display: flex;
+	font-size: 25px;
+	font-weight: bolder;
+	height: auto;
+	width: 220px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#content{
-    display: flex;
-    width: 200px;
-    height: auto;
-    background-color: rgb(160, 158, 158);
+#content {
+	display: flex;
+	width: 200px;
+	height: auto;
+	background-color: rgb(160, 158, 158);
 }
 
-#contentLeft{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 540px;
-    margin: 20px 0;
+#contentLeft {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	height: 540px;
+	margin: 20px 0;
 }
 
-.buttonContentLeft{
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 5px 0px;
-    border: none;
-    background-color: rgb(192, 190, 190);
-    font-weight: bolder;
-    font-size: 15px;
+.buttonContentLeft {
+	display: block;
+	width: 200px;
+	height: 50px;
+	margin: 5px 0px;
+	border: none;
+	background-color: rgb(192, 190, 190);
+	font-weight: bolder;
+	font-size: 15px;
 }
 
-.buttonContentLeft:hover{
-    background-color: rgb(184, 182, 182);
+.buttonContentLeft:hover {
+	background-color: rgb(184, 182, 182);
 }
 
-#right{
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 500px);
-    height: 640px;
-    margin: 50px;
-    background-color: rgb(200 200 200);
-    border-radius: 10px;
+#right {
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 500px);
+	height: 640px;
+	margin: 50px;
+	background-color: rgb(200, 200, 200);
+	border-radius: 10px;
 }
 
-#historyContent{
-    overflow-y: auto;
-    height: 550px;
+#historyContent {
+	overflow-y: auto;
+	height: 550px;
 }
 
-#historyTitle{
-    display: flex;
-    font-size: 25px;
-    font-weight: bolder;
-    height: auto;
-    width: 220px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+#historyTitle {
+	display: flex;
+	font-size: 25px;
+	font-weight: bolder;
+	height: auto;
+	width: 220px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.boxHistoryContent{
-    display: flex;
-    width: calc(100% - 100px);
-    height: 70px;
-    background-color: rgb(160, 158, 158);
-    margin: 15px 0px 15px 45px;
-    border-radius: 10px;
+.boxHistoryContent {
+	display: flex;
+	width: calc(100% - 100px);
+	height: 70px;
+	background-color: rgb(160, 158, 158);
+	margin: 15px 0px 15px 45px;
+	border-radius: 10px;
 }
 
-.userA{
-    width: 40%;
-    display: flex;
-    align-items: center;
+.userA {
+	width: 40%;
+	display: flex;
+	align-items: center;
 }
 
-.infoUser{
-    margin: 0px 20px 0px 10px;
+.infoUser {
+	margin: 0px 20px 0px 10px;
 }
 
-.infoUserName{
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 20px;
+.infoUserName {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 20px;
 }
 
-.infoUserElo{
-    color: red;
-    font-weight: bold;
+.infoUserElo {
+	color: red;
+	font-weight: bold;
 }
 
-.result{
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.result {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-.resultTitle, .pointElo, .resultTitleLose, .pointEloLose{
-    margin: 0px;
+.resultTitle, .pointElo, .resultTitleLose, .pointEloLose {
+	margin: 0px;
 }
 
-.resultTitle{
-    color: yellow;
+.resultTitle {
+	color: yellow;
 }
 
-.pointElo{
-    color: rgb(160 255 160);
+.pointElo {
+	color: rgb(160, 255, 160);
 }
 
-.pointEloLose{
-    color: #962bde;
+.pointEloLose {
+	color: #962bde;
 }
 
-.userB{
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+.userB {
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
 }
 
-.colorUser{
-    padding-left: 10px;
+.colorUser {
+	padding-left: 10px;
+}
+
+.boxHistoryContent {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	/* Thêm các kiểu dáng khác tùy theo nhu cầu của bạn */
+}
+
+.analysisIcon {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px; /* hoặc kích thước tùy ý */
+	height: 30px; /* hoặc kích thước tùy ý */
+	margin-left: 10px; /* Khoảng cách từ nội dung bên cạnh */
+}
+
+.analysisIcon i {
+	font-size: 20px; /* Kích thước của biểu tượng */
+	color: #000; /* Màu sắc của biểu tượng */
 }

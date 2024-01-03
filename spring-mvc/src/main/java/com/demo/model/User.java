@@ -1,8 +1,11 @@
 package com.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class User {
     private int userID = 0;
     private String username;
+    @JsonIgnore
     private String password;
     private int Elo;
     private String lastname;
@@ -83,4 +86,18 @@ public class User {
     public void setCountry(String country) {
         this.country = country;
     }
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", Elo=" + Elo +
+                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                '}';
+    }
+
 }

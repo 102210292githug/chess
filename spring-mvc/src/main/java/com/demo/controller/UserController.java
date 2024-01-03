@@ -1,36 +1,17 @@
 package com.demo.controller;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.demo.model.User;
 import com.demo.service.UserService;
 
 @Controller
-@MultipartConfig(
-		  fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
-		  maxFileSize = 1024 * 1024 * 10,      // 10 MB
-		  maxRequestSize = 1024 * 1024 * 100   // 100 MB
-		)
 public class UserController {
 
 	@Autowired
@@ -105,34 +86,4 @@ public class UserController {
 
 	    return modelAndView;
 	}
-	
-	@RequestMapping(value = "/analys", method = RequestMethod.GET)
-	public ModelAndView analys(HttpServletRequest request) {
-		return new ModelAndView("analys");
-	}
-	
-	@RequestMapping(value = "/fileuploadservlet", method = RequestMethod.POST)
-	public ModelAndView FileUploadServlet(@RequestParam("file") MultipartFile file,
-											@RequestParam("user") String user,
-	                                      HttpServletRequest request) throws IOException, ServletException {
-	    try {
-	        if (file != null && !file.isEmpty()) {
-	            String fileName = file.getOriginalFilename();
-	            String uploadDirectory = "C:" + File.separator + "Users" + File.separator + "Huy" + File.separator + "java_workspace" + File.separator + "spring-mvc" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator + "WEB-INF" + File.separator + "template" + File.separator + "web" + File.separator + "avt";
-	            
-	            File dest = new File(uploadDirectory + File.separator + user + ".jpg");
-	            file.transferTo(dest);
-	        } else {
-	            // Handle the case when the file is empty or null
-	            return new ModelAndView("logout");
-	        }
-	    } catch (IOException | IllegalStateException e) {
-	        // Handle specific exceptions accordingly
-		    return new ModelAndView("redirect: /spring-mvc/profile");
-	    }
-	    
-	    return new ModelAndView("redirect: /spring-mvc/profile");
-	}
-
 }
-

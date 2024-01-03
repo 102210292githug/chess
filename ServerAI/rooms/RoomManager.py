@@ -31,8 +31,7 @@ class RoomManager:
         # Trường hợp phòng không tồn tại
         return None
 
-    def create_player_vs_player_room(self, player1_id: str, player2_id: str) -> str:
-        room_id = str(uuid.uuid4())
+    def create_player_vs_player_room(self, player1_id: str, player2_id: str, room_id: str) -> str:
         self.pvp_rooms[room_id] = PlayerVsPlayerRoom(player1_id, player2_id)
         return room_id
 

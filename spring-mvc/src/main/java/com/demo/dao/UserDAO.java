@@ -152,11 +152,11 @@ public class UserDAO {
         return user;
     }
 	
-	public int checkGameIN_PROGRESS(int userID) {
+	public int checkGameIN_PROGRESS(int userID, int mode) {
 		GameDAO gameDAO = new GameDAO();
 		List<Game> games = gameDAO.getGamesByUserId(userID);
 		for(Game game : games) {
-			if(game.getStatus() == 0) {
+			if(game.getStatus() == 0 && game.getType() == mode) {
 				return game.getGameID();
 			}
 		}

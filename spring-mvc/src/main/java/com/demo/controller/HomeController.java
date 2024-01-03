@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.AI.HandlerMessage;
+import com.demo.AI.RoomManager;
 import com.demo.AI.ServerAI;
 import com.demo.dao.GameDAO;
 import com.demo.dao.MoveDAO;
@@ -16,6 +17,9 @@ import com.demo.model.Game;
 import com.demo.model.Move;
 import com.demo.model.ServerStatus;
 import com.demo.model.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,8 +39,6 @@ public class HomeController {
 		return new ModelAndView("infomation");
 	}
 	
-	
-	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		HttpSession session = request.getSession(false); // Get the current session if it exists, but don't create a new one
@@ -48,7 +50,33 @@ public class HomeController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping(value = "/analysis", method = RequestMethod.GET)
+	public ModelAndView analysisPage(HttpServletRequest request, 
+	                                 @RequestParam(name = "gameId", required = false) Integer gameId) {
+	    HttpSession session = request.getSession(false); // Get the current session if it exists, but don't create a new one
+	    if (session == null || session.getAttribute("userID") == null) {
+	        return new ModelAndView("redirect:/login");
+	    }
 
+	    ModelAndView mav = new ModelAndView("analysis");
+	    System.err.println(gameId);
+	    if (gameId != null) {
+	    	List<Move> moves = moveDAO.getMovesByGameId(gameId);
+//	    	System.err.println(moves);
+//	    	System.err.println(moves.get(1).getBetterMove());
+	    	if (moves.get(1).getBetterMove().isEmpty()) {
+	            moves = RoomManager.analysis(moves);
+	        }
+	    	String movesJson = new Gson().toJson(moves);
+	        mav.addObject("movesJson", movesJson);
+	    } else {
+	        mav.addObject("error", "Game ID is invalid or not provided");
+	    }
+	    
+	    return mav;
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
 		return new ModelAndView("login");
@@ -114,59 +142,82 @@ public class HomeController {
 	    return responseData;
 	}
 
-	
-	@RequestMapping(value = "/play", method = RequestMethod.GET)
-	public ModelAndView play(@RequestParam(required = false) String action, HttpServletRequest request) {
+	// Đánh với máy:
+	@RequestMapping(value = "/playcomputer", method = RequestMethod.GET)
+	public ModelAndView playCompuer(@RequestParam(required = false) String action, HttpServletRequest request) throws JsonProcessingException {
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("userID") == null) {
 			return new ModelAndView("redirect:/login");
 		}
-
 		ModelAndView mav = new ModelAndView("play");
 		int userID = Integer.parseInt(session.getAttribute("userID").toString());
-		
-		int gameID = userDAO.checkGameIN_PROGRESS(userID);
-		// Nếu không có trận nào chưa hoàn thành
+		int gameID = userDAO.checkGameIN_PROGRESS(userID, 0);
+		User user = userDAO.getUserByID(userID);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String userJson = objectMapper.writeValueAsString(user);
+		mav.addObject("userJson", userJson);
+		System.err.println(gameID);
 		if (gameID == -1) {
-			if ("online".equals(action)) {
-				System.err.println("online");
-				gameID = HandlerMessage.handleCreate(userID, "1");
-				// Handle Play Online
-			} else if ("computer".equals(action)) {
-				System.err.println("computer");
-				// Handle Play Computer
-				gameID = HandlerMessage.handleCreate(userID, "0");
-			} else if ("friend".equals(action)) {
-				System.err.println("friend");
-				// Handle Play with Friend
-				gameID = HandlerMessage.handleCreate(userID, "1");
-			}
+			System.err.println("computer");
+			gameID = HandlerMessage.handleCreate(userID, "0");
 			return mav;
-
 		}
 		
-		// Note: Đây chỉ là các trận đấu với máy thôi, các trận đấu với người việc rời khỏi hoặc reload trang thi đấu đồng nghĩa với bỏ cuộc
-		// Nếu có trận đấu chưa hoàn thành 
-		// B1: Lấy move từ database:
 		List<Move> prevMove = moveDAO.getMovesByGameId(gameID);
-		// B2: Kiểm tra xem ván đấu có tồn tại trong các serverAI hiện tại hay không
 		if(HandlerMessage.Check(gameID)) {
-			// nếu có không cần làm gì
 			System.err.println("có game id");
 		}
 		else {
-			// Nếu không có :
 			System.err.println("không có gameid");
 			Game game = gameDAO.getGame(gameID);
 			HandlerMessage.PushGameIN_PROGRESS(gameID, game.getPlayer1ID(), game.getPlayer2ID(), prevMove.toString());
 		}
-		// B3: Truyền các Move lên lại cho bàn cờ mới 
 		mav.addObject("prevMove", prevMove);
-		// B4: Get legal:
 		String legal = HandlerMessage.getLegal(gameID);
 		mav.addObject("legal", legal);
 		return mav;
 	}
-
-
+	
+	// Đánh với người:
+	@RequestMapping(value = "/playonline", method = RequestMethod.GET)
+	public ModelAndView playOnline(@RequestParam(required = false) String action, HttpServletRequest request) throws JsonProcessingException {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("userID") == null) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		int userID = Integer.parseInt(session.getAttribute("userID").toString());
+		ModelAndView mav;
+		int gameID;
+		// nếu có game pvp chưa xong tải lại:
+		if(-1 != userDAO.checkGameIN_PROGRESS(userID, 1)) {
+			
+		}
+		// nếu không :
+		gameID = HandlerMessage.handleCreate(userID, "1");
+		if(/*nếu có người đang đợi ==> bên đen*/ gameID != -1) {
+			mav = new ModelAndView("playBlack");
+			mav.addObject("Type", "NewGame");
+			int userID_oth = HandlerMessage.StartGame(gameID, userID);
+			User user_oth = userDAO.getUserByID(userID_oth);
+			User user = userDAO.getUserByID(userID);
+			ObjectMapper objectMapper = new ObjectMapper();
+			String userJson = objectMapper.writeValueAsString(user);
+			String userOthJson = objectMapper.writeValueAsString(user_oth);
+			mav.addObject("userJson", userJson);
+			mav.addObject("userOthJson", userOthJson);
+			WebSocket.sendMessageToUser(userID_oth, "Start " + userID + " " + user.getUsername() + " " + user.getElo());
+		}
+		else /*bên trắng chờ*/{
+			mav = new ModelAndView("playWhite");
+			mav.addObject("Type", "NewGame");
+			User user = userDAO.getUserByID(userID);
+			ObjectMapper objectMapper = new ObjectMapper();
+			String userJson = objectMapper.writeValueAsString(user);
+			mav.addObject("userJson", userJson);
+		}
+		
+		return mav;
+	}
+	
 }

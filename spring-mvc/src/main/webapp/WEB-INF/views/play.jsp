@@ -45,6 +45,9 @@
     var legal = "<c:out value = '${legal}'/>";
     console.log(legal);
     window.onload = function() {
+    	const user = JSON.parse('${userJson}');
+        document.getElementById('username_bottom').textContent = user.username;
+        document.getElementById('elo_bottom').textContent = 'Elo: ' + user.elo;
         openWebSocket(userID);
         KhoiTao();
         RefillMoves(Moves);
@@ -69,7 +72,7 @@
 				<button id="play" class="buttonTop">
 					<i class="fa-solid fa-chess"></i>PLAY
 				</button>
-				<button id="analysis" onclick="redirectTo('<c:url value='/analys'/>')" class="buttonTop">
+				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
 				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">
@@ -129,14 +132,12 @@
 
 			<div id="divBanCo">
 				<div class="competitor">
-					<img style="margin: 0px;"
-						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
-						alt=""/>
-						<div class="contentCompetitor">
-							<p>Competitor</p>
-							<p style="color: red; margin-top: -15px;">Elo: 0</p>
-						</div> <img class="flag"
-						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<div class="contentCompetitor">
+						<p id="username_top">Computer</p>
+						<p id="elo_top" style="color: red; margin-top: -15px;">Elo: 2000</p>
+					</div>
+					<img class="flag" src="./template/web/Icon/flag_icon.png" />
 				</div>
 				<table id="BanCo">
 					<tr>
@@ -220,15 +221,14 @@
 						<td id="h1" onclick="Click(this.id)"><img id="ih1" /></td>
 					</tr>
 				</table>
-				<div class="competitor" style="margin-top: -10px;">
-					<img style="margin: 0px;"
-						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
-						alt=""/>
-						<div class="contentCompetitor">
-							<p>Competitor</p>
-							<p style="color: red; margin-top: -15px;">Elo: 0</p>
-						</div> <img class="flag"
-						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+				<div class="competitor" style="margin-top: -10px;" >
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<div class="contentCompetitor">
+						<p id="username_bottom">Competitor</p>
+						<p id="elo_bottom" style="color: red; margin-top: -15px;">Elo:
+							0</p>
+					</div>
+					<img class="flag" src="./template/web/Icon/flag_icon.png" />
 				</div>
 			</div>
 

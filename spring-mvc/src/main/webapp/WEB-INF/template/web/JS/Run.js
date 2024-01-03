@@ -14,6 +14,12 @@ var legalMoves = {
 	a2 : [ 'a3', 'a4' ]
 };
 
+
+
+function Start(){
+	Done = true;
+}
+
 function filllegalMove(legal) {
 	legalMoves = legal;
 }
@@ -51,6 +57,11 @@ function WhiteOrBlack(isW) {
 
 function Nextturn() {
 	Done = true;
+}
+
+function Wait(){
+	Done = false;
+	console.log(Done + " " + "Wait func");
 }
 
 function Click(id) {

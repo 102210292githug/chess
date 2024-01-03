@@ -1,6 +1,8 @@
+import json
 import socket
 import re
 
+from ai.analyzer import analyze_game
 from rooms.RoomManager import RoomManager
 
 
@@ -38,6 +40,7 @@ class ChessClient:
                         room_pvp.make_move(move)
                         legal_moves = room_pvp.get_legal_moves()
                         response = str(legal_moves)
+                        response = f"Computer moved: {move}, Legal moves: {legal_moves}"
                     elif room_pvc:
                         room_pvc.make_move(move)
                         computer_move = room_pvc.computer_move()
@@ -91,6 +94,10 @@ class ChessClient:
                                 move = move.strip()
                                 room_pvp.make_move(move)
                     response = "Done!"
+                elif value[0] == "Analysis":
+                    game_moves = re.findall(r'\b([a-h][1-8][a-h][1-8])\b', data)
+                    response_str = analyze_game(game_moves)
+                    response = json.dumps(response_str)
                 else:
                     response = "Invalid command"
 

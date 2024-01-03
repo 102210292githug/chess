@@ -20,26 +20,26 @@ public class GameHistoryService {
         List<Game> games = gameDAO.getGamesByUserId(userId);
         List<GameHistory> history = new ArrayList<>();
         User user = userDAO.getUserByID(userId);
+        
         for(Game game : games) {
         	System.err.println("1");
         	GameHistory gamehistory = new GameHistory();
+        	gamehistory.setId(game.getGameID());
+        	gamehistory.setPlayerAEloChange(user.getElo());
+        	gamehistory.setPlayerAName(user.getUsername());
         	if(user.getUserID() == game.getPlayer1ID()) {
         		User user_oth = userDAO.getUserByID(game.getPlayer2ID());
-        		gamehistory.setId(game.getGameID());
-            	gamehistory.setPlayerAEloChange(user.getElo());
-            	gamehistory.setPlayerAName(user.getUsername());
             	gamehistory.setPlayerBEloChange(user_oth.getElo());
             	gamehistory.setPlayerBName(user_oth.getUsername());
             	gamehistory.setResult(game.getOutcome().toString());
         	}
         	else {
         		User user_oth = userDAO.getUserByID(game.getPlayer1ID());
-        		gamehistory.setId(game.getGameID());
-            	gamehistory.setPlayerBEloChange(user_oth.getElo());
-            	gamehistory.setPlayerBName(user.getUsername());
-            	gamehistory.setPlayerAEloChange(user.getElo());
-            	gamehistory.setPlayerAName(userDAO.getUserByID(game.getPlayer2ID()).getUsername());
-            	gamehistory.setResult(game.getOutcome().toString());
+        		gamehistory.setPlayerBEloChange(user_oth.getElo());
+            	gamehistory.setPlayerBName(user_oth.getUsername());
+            	String res = game.getOutcome().toString();
+            	gamehistory.setResult(res == "WIN" ? "LOSE" : (res == "LOSE" ? "WIN" : res));
+            	gamehistory.swapIcon();
         	}
         	history.add(gamehistory);
         }

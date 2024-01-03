@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHESS ONLINE - HISTORY</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CHESS ONLINE - HISTORY</title>
 </head>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/template/web/CSS/styleHistory.css'/>" />
@@ -19,7 +19,8 @@
 	<div id="divMain">
 		<div id="left">
 			<div id="left-top">
-				<button id="home" class="buttonTop" onclick="redirectTo('<c:url value='/home'/>')">
+				<button id="home" class="buttonTop"
+					onclick="redirectTo('<c:url value='/home'/>')">
 					<i style="color: rgb(104, 169, 243);" class="fa-solid fa-house"></i>CHESS
 					ONLINE
 				</button>
@@ -29,7 +30,8 @@
 				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
-				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">
+				<button id="history" class="buttonTop"
+					onclick="redirectTo('<c:url value='/history'/>')">
 					<i class="fa-solid fa-clock"></i>HISTORY
 				</button>
 			</div>
@@ -54,9 +56,9 @@
 			<button id="logout" onclick="redirectTo('<c:url value='/logout'/>')"
 				class="buttonSettingsChoose">Log out</button>
 			<br>
-			<button id="profile"
-				onclick="redirectTo('<c:url value='/profile'/>')"
-				class="buttonSettingsChoose">Profie</button>
+				<button id="profile"
+					onclick="redirectTo('<c:url value='/profile'/>')"
+					class="buttonSettingsChoose">Profie</button>
 		</div>
 
 		<script>
@@ -88,7 +90,7 @@
 			<div id="historyContainer"></div>
 		</div>
 	</div>
-<script>
+	<script>
     document.addEventListener('DOMContentLoaded', function() {
         fetch('./api/history')
             .then(response => response.json())
@@ -121,6 +123,9 @@
                             </div>
                             <img class="colorUser" alt="Player B">
                         </div>
+                        <div class="analysisIcon">
+	                        <i class="fa-solid fa-magnifying-glass"></i>
+	                    </div>
                     `;
 
                     // Gán dữ liệu vào các thẻ
@@ -137,8 +142,12 @@
                     historyElement.querySelector('.userB .infoUserName').textContent = game.playerBName;
                     historyElement.querySelector('.userB .infoUserElo').textContent = 'Elo: ' + game.playerBEloChange;
                     historyElement.querySelector('.userB img:nth-of-type(1)').src = game.playerBFlag;
-
-                    // Thêm historyElement vào historyContainer
+                    
+                    historyElement.querySelector('.analysisIcon').id = game.id;
+                    historyElement.querySelector('.analysisIcon').onclick = function() {
+                        redirectToAnalysis(game.id);
+                    };
+                    // Thêm historyElement vào historyContainer	
                     historyContainer.appendChild(historyElement);
                 });
             })
@@ -147,6 +156,7 @@
                 historyContainer.innerHTML = '<p>Không thể tải lịch sử trận đấu.</p>';
             });
     });
+
 </script>
 
 

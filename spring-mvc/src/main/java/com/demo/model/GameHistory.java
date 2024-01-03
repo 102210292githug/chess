@@ -6,8 +6,8 @@ public class GameHistory {
     private String playerBName;
     private String playerAIcon = "./template/web/QuanCo/Tot_Trang.png"; 
     private String playerBIcon = "./template/web/QuanCo/Tot_Den.png"; // URL hình ảnh
-    private String playerAFlag = "./template/web/Icon/la-co-viet-nam-vector-1.png"; // URL cờ
-    private String playerBFlag = "./template/web/Icon/la-co-viet-nam-vector-1.png"; // URL cờ
+    private String playerAFlag = "./template/web/Icon/flag_icon.png"; // URL cờ
+    private String playerBFlag = "./template/web/Icon/flag_icon.png"; // URL cờ
     private String result; // WIN, LOSE, DRAW
     private int playerAEloChange;
     private int playerBEloChange;
@@ -15,7 +15,11 @@ public class GameHistory {
     public int getId() {
         return id;
     }
-
+    public void swapIcon() {
+    	String tmp = playerAIcon;
+    	playerAIcon = playerBIcon;
+    	playerBIcon = tmp;
+    }
     public void setId(int id) {
         this.id = id;
     }
