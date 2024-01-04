@@ -3,6 +3,7 @@ body {
 	padding: 0px;
 	background-color: #EDEDEE;
 	font-family: 'Times New Roman', Times, serif;
+	background-image: url(../Icon/bgrx.png);
 }
 
 #divMain {
@@ -22,6 +23,7 @@ button:hover {
 	width: 200px;
 	height: 730px;
 	background-color: rgb(160, 158, 158);
+	border: 2px solid #939393;
 }
 
 #settingsChoose {
@@ -150,6 +152,10 @@ i {
 	background-color: rgb(160, 158, 158);
 	margin: 15px 0px 15px 45px;
 	border-radius: 10px;
+}
+
+#historyContainer{
+	overflow: auto;
 }
 
 .userA {

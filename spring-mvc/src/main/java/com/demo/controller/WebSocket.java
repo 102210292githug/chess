@@ -56,7 +56,7 @@ public class WebSocket {
 
     // Phương thức gửi tin nhắn đến userID cụ thể
     public static void sendMessageToUser(int userID, String message) {
-    	System.err.println(message);
+    	System.err.println("userID: " + userID + " " + message);
         Session targetSession = userSessionMap.get(userID);
         if (targetSession != null && targetSession.isOpen()) {
             try {

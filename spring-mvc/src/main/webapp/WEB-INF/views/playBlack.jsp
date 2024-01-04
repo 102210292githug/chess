@@ -164,7 +164,8 @@
 
 			<div id="divBanCo">
 				<div class="competitor">
-					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png"
+						alt="User Avatar" />
 					<div class="contentCompetitor">
 						<p id="username_top">Competitor</p>
 						<p id="elo_top" style="color: red; margin-top: -15px;">Elo: 0</p>
@@ -254,7 +255,8 @@
 					</tr>
 				</table>
 				<div class="competitor" style="margin-top: -10px;">
-					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png"
+						alt="User Avatar" />
 					<div class="contentCompetitor">
 						<p id="username_bottom">Competitor</p>
 						<p id="elo_bottom" style="color: red; margin-top: -15px;">Elo:
@@ -290,8 +292,24 @@
 				<button class="messageButton">Hòa nhé!</button>
 				<button class="messageButton">Gà rứa mi</button>
 				<button class="messageButton">I Love You</button>
+				<button id="surrenderButton">Đầu hàng</button>
+				<button id="drawButton">Cầu hòa</button>
 			</div>
 		</div>
+		<script>
+		document.getElementById('surrenderButton').addEventListener('click', function() {
+		    // Xử lý khi người dùng click vào nút Đầu hàng
+		    console.log('Người dùng đã chọn Đầu hàng');
+		    socket.send("resign")
+		});
+	
+		document.getElementById('drawButton').addEventListener('click', function() {
+		    // Xử lý khi người dùng click vào nút Cầu hòa
+		    console.log('Người dùng đã chọn Cầu hòa');
+		   
+		});
+
+	</script>
 
 	</div>
 

@@ -125,7 +125,15 @@ public class HandlerMessage {
     private static void handleResign(int userID) {
         // Xử lý đầu hàng
     	int gameID = userGameMap.get(userID);
-        roomManager.resignGame(gameID, userID);
+    	Pair userIDs = gameUsersMap.get(gameID);
+    	int userID_oth = userIDs.first == userID ? userIDs.second : userIDs.first;
+    	if(userID == userIDs.first) {
+    		roomManager.resignGame(gameID, userID, userID_oth, "LOSE");
+    	}
+    	else {
+    		roomManager.resignGame(gameID, userID, userID_oth, "WIN");
+    	}
+        
     }
 
     private static void handleAnalyze(int gameID) {

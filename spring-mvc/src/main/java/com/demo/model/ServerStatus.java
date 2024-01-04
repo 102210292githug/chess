@@ -1,12 +1,15 @@
 package com.demo.model;
 
 import com.demo.AI.ClientConnection;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ServerStatus {
     private String serverName;
     private int gamePVP;
     private int gamePVE;
-    private transient  ClientConnection connection;
+    @JsonIgnore
+    private ClientConnection connection;
+
     private String status;
 
     // Constructor

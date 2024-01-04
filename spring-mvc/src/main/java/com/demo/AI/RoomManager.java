@@ -2,6 +2,8 @@ package com.demo.AI;
 
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.demo.controller.WebSocket;
 import com.demo.dao.GameDAO;
 import com.demo.dao.MoveDAO;
 import com.demo.model.Game;
@@ -22,9 +24,9 @@ import java.lang.reflect.Type;
 
 @SuppressWarnings("unused")
 public class RoomManager {
-	private ConcurrentHashMap<Integer, ClientConnection> activeGames = new ConcurrentHashMap<>();
+	private static ConcurrentHashMap<Integer, ClientConnection> activeGames = new ConcurrentHashMap<>();
 	private ConcurrentHashMap<Integer, Game> games = new ConcurrentHashMap<>();
-	private GameDAO gameDAO = new GameDAO();
+	private static GameDAO gameDAO = new GameDAO();
 	private static MoveDAO moveDAO = new MoveDAO();
 
 	public int createGame(int mode, int player1ID, int player2ID) throws IOException {
@@ -65,8 +67,12 @@ public class RoomManager {
 					game.setStatus(1);
 					if (userID == game.getPlayer2ID()) {
 						game.setOutcome(Game.GameOutcome.WIN);
+						//System.err.println("Thoong bao " + game.getPlayer1ID());
+						if(game.getType() != 0) WebSocket.sendMessageToUser(game.getPlayer2ID(), "YOU WIN");
 					} else {
 						game.setOutcome(Game.GameOutcome.LOSE);
+						//System.err.println("Thoong bao " + game.getPlayer2ID());
+						if(game.getType() != 0) WebSocket.sendMessageToUser(game.getPlayer1ID(), "YOU WIN");
 					}
 					gameDAO.updateGame(game);
 					if (game.getType() == 0)
@@ -78,8 +84,9 @@ public class RoomManager {
 				System.err.println(res);
 				return res;
 			} catch (IOException e) {
-				ServerAI.removeAvailablePythonServer(connection);
+				//ServerAI.removeAvailablePythonServer(connection);
 				moveDAO.deleteLastMoveIfOdd(gameId);
+				WebSocket.sendMessageToUser(userID, "Alert " + "ServerAI đang lỗi vui lòng đợi");
 				e.printStackTrace();
 			}
 		}
@@ -127,8 +134,24 @@ public class RoomManager {
 
 	}
 
-	public void resignGame(int gameID, int userID) {
-
+	public void resignGame(int gameID, int userID, int userID_oth, String res) {
+		Game game = gameDAO.getGame(gameID);
+		ClientConnection connection = activeGames.get(gameID);
+		if(res.equals("WIN")) {
+			game.setOutcome(GameOutcome.WIN);
+			WebSocket.sendMessageToUser(userID, "YOU WIN");
+			WebSocket.sendMessageToUser(userID_oth, "YOU LOSE");
+		}
+		else {
+			game.setOutcome(GameOutcome.LOSE);
+			WebSocket.sendMessageToUser(userID, "YOU LOSE");
+			WebSocket.sendMessageToUser(userID_oth, "YOU WIN");
+		}
+		gameDAO.updateGame(game);
+		if (game.getType() == 0)
+			ServerAI.updatePVE(connection, -1);
+		else
+			ServerAI.updatePVP(connection, -1);
 	}
 
 	public void analyzeGame(int gameID) {
@@ -258,7 +281,7 @@ public class RoomManager {
 				connection.sendMessage(
 						"Add mode=" + mode + " " + player1ID + " " + player2ID + " " + gameId + " " + moves);
 				System.err.println("Add mode=" + mode + " " + player1ID + " " + player2ID + " " + gameId + " " + moves);
-				if (mode == 1)
+				if (mode == 0)
 					ServerAI.updatePVE(connection, +1);
 				else
 					ServerAI.updatePVP(connection, +1);
@@ -312,6 +335,24 @@ public class RoomManager {
 		for(Move move : moves) {
 			moveDAO.updateMove(move);
 		}
+	}
+	
+	public static void PullGame(ClientConnection conn, ClientConnection conn2) throws IOException {
+		for (Integer gameID : activeGames.keySet()) {
+            if (activeGames.get(gameID).equals(conn)) {
+                activeGames.put(gameID, conn2);
+                List<Move> prevMove = moveDAO.getMovesByGameId(gameID);
+        		Game game = gameDAO.getGame(gameID);
+        		conn2.sendMessage("Add mode=" + game.getType() + " " + game.getPlayer1ID() + " " + game.getPlayer2ID() + " " + gameID + " " + prevMove.toString());
+        		if (game.getType() == 0) {
+    				ServerAI.updatePVE(conn2, +1);
+    				ServerAI.updatePVE(conn, -1);
+    			} else {
+    				ServerAI.updatePVP(conn2, +1);
+    				ServerAI.updatePVP(conn, -1);
+    			}
+            }
+        }
 	}
 
 }

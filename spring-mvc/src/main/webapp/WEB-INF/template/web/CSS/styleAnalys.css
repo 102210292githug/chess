@@ -3,6 +3,7 @@ body{
 	padding: 0px;
 	background-color:#EDEDEE;
 	font-family: 'Times New Roman', Times, serif;
+	background-image: url(../Icon/bgrcb.png);
 }
 
 button:hover{
@@ -16,6 +17,7 @@ button:hover{
 	width: 200px;
 	height: 100%;
 	background-color: rgb(160, 158, 158);
+	border: 2px solid #939393;
 }
 
 #settingsChoose{
@@ -120,15 +122,15 @@ i{
 }
 
 #right{
-	display: flex;
-	flex-direction: column;
-	/* justify-content: center; */
+    display: flex;
+    flex-direction: column;
     width: 380px;
     height: 600px;
-	margin: 50px 50px;
-	background-color: rgb(179, 179, 187);
-	font-weight: bolder;
-	border-radius: 30px;
+    margin: 50px 50px;
+    background-color: rgb(179, 179, 187);
+    font-weight: bolder;
+    border-radius: 30px;
+    border: 2px solid #939393;
 }
 
 #chessStep{
@@ -148,11 +150,31 @@ i{
 
 #stepBlack{
 	display: block;
-	width: 50%;
-	height: 380px;
-	background-color: black;
-	color: white;
-	overflow-y: auto;
+    width: 50%;
+    height: 380px;
+    background-color: white;
+    border-left: 2px solid black;
+    overflow-y: auto;
+}
+
+h3{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: cursive;
+}
+
+li{
+	margin: 10px 0px;
+    border-bottom: 2px solid red;
+    width: 130px;
+}
+
+hr{
+    border: 1px solid red;
+    width: 183px;
+    position: absolute;
+    margin: -5px 0px 0px -40px;
 }
 
 #titleRight{
@@ -169,13 +191,18 @@ i{
 }
 
 .btnMove{
-	width: 70px;
+    width: 70px;
     height: 50px;
     margin: 20px;
-    background: #9867e2;
+    background: #8ff2ff;
     font-weight: bold;
     font-size: 35px;
+    border-radius: 15px;
     border: solid 1px #6228b8;
+}
+
+#pause{
+	font-size: 12px;
 }
 
 /*CSS Div Main*/

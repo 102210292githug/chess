@@ -74,9 +74,7 @@
 								<button class="action-button disconnect-button"
 									onclick="disconnectServer('${status.serverName}')">Ngắt
 									Kết Nối</button>
-								<button class="action-button"
-									onclick="redistributeGames('${status.serverName}')">Đẩy
-									Ván Cờ</button>
+								
 							</td>
 						</tr>
 					</c:forEach>
@@ -172,7 +170,6 @@
                 "<td>" + status.status + "</td>" +
                 "<td>" +
                     "<button class='action-button disconnect-button' onclick='disconnectServer(\"" + status.serverName + "\")'>Ngắt Kết Nối</button>" +
-                    "<button class='action-button' onclick='redistributeGames(\"" + status.serverName + "\")'>Đẩy Ván Cờ</button>" +
                 "</td>" +
             "</tr>";
         });
@@ -195,6 +192,27 @@
         myChart.data.datasets[1].data = pvpData;
         myChart.update();
     }
+
+    function disconnectServer(serverName) {
+        $.ajax({
+            url: 'disconnectServer', // Đường dẫn tới API ngắt kết nối
+            type: 'POST', // 
+            data: { serverName: serverName },
+            success: function(response) {
+                
+                
+                // Server vẫn đang quản lý ván cờ
+                // alert('Cảnh báo: Server ' + serverName + ' nếu đang quản lý ván cờ. Ván cờ sẽ được chuyển sang server khác trước khi ngắt kết nối.');
+                
+                alert(response.message);
+                fetchDataAndUpdatePage(); // Cập nhật trạng thái trên trang
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+    }
+
 
 
     $(document).ready(function() {

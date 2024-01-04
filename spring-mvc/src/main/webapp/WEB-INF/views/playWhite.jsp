@@ -76,7 +76,8 @@
 	<div id="divMain">
 		<div id="left">
 			<div id="left-top">
-				<button id="home" class="buttonTop" onclick="redirectTo('<c:url value='/home'/>')">
+				<button id="home" class="buttonTop"
+					onclick="redirectTo('<c:url value='/home'/>')">
 					<i style="color: rgb(104, 169, 243);" class="fa-solid fa-house"></i>CHESS
 					ONLINE
 				</button>
@@ -86,7 +87,8 @@
 				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
-				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">
+				<button id="history" class="buttonTop"
+					onclick="redirectTo('<c:url value='/history'/>')">
 					<i class="fa-solid fa-clock"></i>HISTORY
 				</button>
 			</div>
@@ -110,10 +112,10 @@
 		<div id="settingsChoose">
 			<button id="logout" onclick="redirectTo('<c:url value='/logout'/>')"
 				class="buttonSettingsChoose">Log out</button>
-			<br/>
-				<button id="profile"
-					onclick="redirectTo('<c:url value='/profile'/>')"
-					class="buttonSettingsChoose">Profie</button>
+			<br />
+			<button id="profile"
+				onclick="redirectTo('<c:url value='/profile'/>')"
+				class="buttonSettingsChoose">Profie</button>
 		</div>
 
 		<script>
@@ -137,16 +139,15 @@
 			</script>
 
 		<div id="mid">
-			<div id="divNguoiChoiCoDen">
-				
-			</div>
+			<div id="divNguoiChoiCoDen"></div>
 
 			<div id="divBanCo">
 				<div class="competitor">
-					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png"
+						alt="User Avatar" />
 					<div class="contentCompetitor">
-						<p id="username_top">Competitor</p>
-						<p id="elo_top" style="color: red; margin-top: -15px;">Elo: 0</p>
+						<p id="username_top">Wait...</p>
+						<p id="elo_top" style="color: red; margin-top: -15px;">Elo: ???</p>
 					</div>
 					<img class="flag" src="./template/web/Icon/flag_icon.png" />
 				</div>
@@ -233,7 +234,8 @@
 					</tr>
 				</table>
 				<div class="competitor" style="margin-top: -10px;">
-					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png"
+						alt="User Avatar" />
 					<div class="contentCompetitor">
 						<p id="username_bottom">Competitor</p>
 						<p id="elo_bottom" style="color: red; margin-top: -15px;">Elo:
@@ -243,17 +245,15 @@
 				</div>
 			</div>
 
-			<div id="divNguoiChoiCoDo">
-			
-			</div>
+			<div id="divNguoiChoiCoDo"></div>
 		</div>
 
 		<div id="right">
 			<div id="historyResult">
-		    <ol id="myList">
-		    
-		    </ol>
-		  </div>
+				<ol id="myList">
+
+				</ol>
+			</div>
 			<div id="chat">
 				<div class="competitorChat">Hello You</div>
 				<div class="meChat">Hello Competitor</div>
@@ -270,8 +270,24 @@
 				<button class="messageButton">Hòa nhé!</button>
 				<button class="messageButton">Gà rứa mi</button>
 				<button class="messageButton">I Love You</button>
+				<button id="surrenderButton">Đầu hàng</button>
+				<button id="drawButton">Cầu hòa</button>
 			</div>
 		</div>
+		<script>
+		document.getElementById('surrenderButton').addEventListener('click', function() {
+		    // Xử lý khi người dùng click vào nút Đầu hàng
+		    console.log('Người dùng đã chọn Đầu hàng');
+		    socket.send("resign")
+		});
+	
+		document.getElementById('drawButton').addEventListener('click', function() {
+		    // Xử lý khi người dùng click vào nút Cầu hòa
+		    console.log('Người dùng đã chọn Cầu hòa');
+		   
+		});
+
+	</script>
 
 	</div>
 

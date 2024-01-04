@@ -26,6 +26,10 @@ function openWebSocket(userID) {
 }
 
 function handleServerMessage(message) {
+	if(message == "YOU LOSE" || message == "YOU WIN"){
+		alert(message);
+		return;
+	}
     console.log("Message from server:", message);
     // messgage = Start 2 admin 900
     console.log("Type of message:", typeof message);
@@ -36,6 +40,14 @@ function handleServerMessage(message) {
         document.getElementById('username_top').textContent = data[2];
         document.getElementById('elo_top').textContent = 'Elo: ' + data[3];
         return;
+    }
+    else if(data[0] == "Alert"){
+    	var tb = "";
+    	for(let i = 1; i < data.length; i++){
+    		tb += " " + data[i];
+    	}
+    	alert(tb);
+    	return;
     }
     var data1 = message.split(':');
     if(data1[0] == "MSG"){
@@ -50,16 +62,20 @@ function handleServerMessage(message) {
 function processGameData(message) {
     var data = message.split(' AND ');
     var parts = data[0];
-
-    parseDataString(data[1]);
-    console.log(legal);
-    addMoveToList(parts);
-    handleOpponentMove(parts[0] + parts[1], parts[2] + parts[3]);
-    Nextturn();
-
+    
     if (data[1] === "YOU LOSE" || data[1] === "YOU WIN") {
+    	handleOpponentMove(parts[0] + parts[1], parts[2] + parts[3]);
+        addMoveToList(parts);
         alert(data[1]);
+        return;
     }
+    else{
+    	parseDataString(data[1]);
+        console.log(legal);
+    	handleOpponentMove(parts[0] + parts[1], parts[2] + parts[3]);
+        addMoveToList(parts);
+    }
+    Nextturn();
 }
 
 function sendMove(fromLocation, toLocation) {
@@ -126,4 +142,14 @@ function SendMessage(who , message) {
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-
+//document.getElementById('surrenderButton').addEventListener('click', function() {
+//    // Xử lý khi người dùng click vào nút Đầu hàng
+//    console.log('Người dùng đã chọn Đầu hàng');
+//    socket.send("resign");
+//});
+//
+//document.getElementById('drawButton').addEventListener('click', function() {
+//    // Xử lý khi người dùng click vào nút Cầu hòa
+//    console.log('Người dùng đã chọn Cầu hòa');
+//    
+//});
