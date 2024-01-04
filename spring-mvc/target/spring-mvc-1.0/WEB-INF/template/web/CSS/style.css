@@ -1,8 +1,12 @@
 body{
-	margin:0px;
-	padding: 0px;
-	background-color:#EDEDEE;
-	font-family: 'Times New Roman', Times, serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: #EDEDEE;
+    font-family: Arial, sans-serif;
+}
+
+button:hover{
+	cursor: pointer;
 }
 
 #left{
@@ -22,6 +26,30 @@ body{
 	border: none;
 	background-color: rgb(192, 190, 190);
 	font-weight: bolder;
+}
+
+#login{
+    width: 150px;
+    height: 50px;
+    font-family: cursive;
+    font-size: 20px;
+    border: none;
+    background-color: #6aeb6a;
+    border-radius: 15px;
+    color: white;
+    margin: 20px;
+}
+
+#signup{
+	width: 150px;
+    height: 50px;
+    font-family: cursive;
+    font-size: 20px;
+    border: none;
+    background-color: #6aeb6a;
+    border-radius: 15px;
+    color: white;
+    margin: 0px 20px 20px 20px;
 }
 
 #home{
@@ -59,12 +87,13 @@ i{
 	margin: 100px 100px;
 	background-color: rgb(179, 179, 187);
 	font-weight: bolder;
+	border-radius: 20px;
 }
 
 .inRight{
 	display: block;
 	height: 50px;
-	width: 400px;
+	width: 350px;
 	margin: 12px 0;
 	border: none;
 	font-weight: bolder;
@@ -76,14 +105,27 @@ i{
 	text-align: center;
 	color: red;
 	font-size: 25px;
+	margin-bottom: 30px;
 }
 
-#playOnl, #computer{
-	background-color: #87fb7f;
+#playOnline, #playComputer{
+	background-color: white;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+#playOnline:hover, #playComputer:hover{
+	background-color: #e9e9e9;
 }
 
 #playFriend{
 	background-color: rgb(145, 247, 247);
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+#playFriend:hover{
+	background-color: rgb(79, 255, 255);
 }
 
 /*CSS Div Main*/
@@ -143,9 +185,6 @@ i{
 	width: 26%;
 	height:100%;
 }
-#PointCoDen {
-	
-}
 
 #PointCoDo {
 	color:#FF0004;
@@ -163,7 +202,7 @@ i{
 	height: 70px;
 	width: 70px;
 	border-style:solid;
-	border-color: #AAB69B;
+	border-color: #f3cdca;
 	border-collapse:collapse;
 	border-width: 2px;
 }
@@ -172,7 +211,7 @@ i{
   border-width: 2px;
   border-collapse: collapse;
   border-style: solid;
-  border-color: #1BA39C;
+  border-color: #c51414;
 }
 
 img{

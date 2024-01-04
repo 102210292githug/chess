@@ -1,18 +1,42 @@
 package com.demo.controller;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.demo.model.User;
 import com.demo.service.UserService;
 
+@SuppressWarnings("unused")
 @Controller
+@MultipartConfig(
+		  fileSizeThreshold = 256 * 256 * 1, // 1 MB
+		  maxFileSize = 256 * 256 * 10,      // 10 MB
+		  maxRequestSize = 256 * 256 * 100   // 100 MB
+		)
+
 public class UserController {
+	@Autowired
+    private ServletContext servletContext;
 
 	@Autowired
 	private UserService userService;
@@ -86,4 +110,29 @@ public class UserController {
 
 	    return modelAndView;
 	}
+	
+	
+	@RequestMapping(value = "/fileuploadservlet", method = RequestMethod.POST)
+	public ModelAndView FileUploadServlet(@RequestParam("file") MultipartFile file,
+											@RequestParam("user") String user,
+	                                      HttpServletRequest request) throws IOException, ServletException {
+	    try {
+	        if (file != null && !file.isEmpty()) {
+	            String uploadDirectory = servletContext.getRealPath("/WEB-INF/template/web/avt");
+	            System.err.println(uploadDirectory);
+	            File dest = new File(uploadDirectory + File.separator + user + ".jpg");
+	            System.err.println(uploadDirectory + File.separator + user + ".jpg");
+	            file.transferTo(dest);
+	        } else {
+	            // Handle the case when the file is empty or null
+	            return new ModelAndView("logout");
+	        }
+	    } catch (IOException | IllegalStateException e) {
+	        // Handle specific exceptions accordingly
+		    return new ModelAndView("redirect: /spring-mvc/profile");
+	    }
+	    
+	    return new ModelAndView("redirect: /spring-mvc/profile");
+	}
+
 }

@@ -40,13 +40,20 @@
 <script type="text/javascript">
     const userID = '${sessionScope.userID}'; // Lấy userID từ session
     console.log(userID); // Kiểm tra userID
-    var chessboardStr = "<c:out value='${chessboard}'/>";
-    console.log(chessboardStr);
-    // Gọi hàm openWebSocket và truyền userID
+    var Moves = "<c:out value ='${prevMove}'/>";
+    console.log(Moves);
+    var legal = "<c:out value = '${legal}'/>";
+    console.log(legal);
     window.onload = function() {
-    	console.log("hew");
+    	const user = JSON.parse('${userJson}');
+        document.getElementById('username_bottom').textContent = user.username;
+        document.getElementById('elo_bottom').textContent = 'Elo: ' + user.elo;
         openWebSocket(userID);
-        KhoiTao2(chessboardStr);
+        KhoiTao();
+        RefillMoves(Moves);
+        if (legal.length > 5) {
+            parseDataString(legal);
+        }
     };
 </script>
 
@@ -125,14 +132,12 @@
 
 			<div id="divBanCo">
 				<div class="competitor">
-					<img style="margin: 0px;"
-						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
-						alt=""/>
-						<div class="contentCompetitor">
-							<p>Competitor</p>
-							<p style="color: red; margin-top: -15px;">Elo: 0</p>
-						</div> <img class="flag"
-						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<div class="contentCompetitor">
+						<p id="username_top">Computer</p>
+						<p id="elo_top" style="color: red; margin-top: -15px;">Elo: 2000</p>
+					</div>
+					<img class="flag" src="./template/web/Icon/flag_icon.png" />
 				</div>
 				<table id="BanCo">
 					<tr>
@@ -216,15 +221,14 @@
 						<td id="h1" onclick="Click(this.id)"><img id="ih1" /></td>
 					</tr>
 				</table>
-				<div class="competitor" style="margin-top: -10px;">
-					<img style="margin: 0px;"
-						src="./template/web/Icon/385495544_283837477747988_1133442171291101487_n.png"
-						alt=""/>
-						<div class="contentCompetitor">
-							<p>Competitor</p>
-							<p style="color: red; margin-top: -15px;">Elo: 0</p>
-						</div> <img class="flag"
-						src="./template/web/Icon/la-co-viet-nam-vector-1.png"/>
+				<div class="competitor" style="margin-top: -10px;" >
+					<img style="margin: 0px;" src="./template/web/Icon/user_icon.png" alt="User Avatar" />
+					<div class="contentCompetitor">
+						<p id="username_bottom">Competitor</p>
+						<p id="elo_bottom" style="color: red; margin-top: -15px;">Elo:
+							0</p>
+					</div>
+					<img class="flag" src="./template/web/Icon/flag_icon.png" />
 				</div>
 			</div>
 

@@ -8,7 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CHESS ONLINE</title>
 
-<link rel="icon" href="<c:url value='/template/web/QuanCo/Ma_Do.png'/>" />
+<link rel="icon"
+	href="<c:url value='/template/web/QuanCo/Ma_Trang.png'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/template/web/CSS/style.css'/>" />
 <script src="https://kit.fontawesome.com/5175756225.js"
@@ -43,16 +44,23 @@
 	<div id="divMain">
 		<div id="left">
 			<div id="left-top">
-				<button id="home" class="buttonTop">
+				<button id="home" class="buttonTop" onclick="redirectTo('<c:url value='/home'/>')">
 					<i style="color: rgb(104, 169, 243);" class="fa-solid fa-house"></i>CHESS
 					ONLINE
+				</button>
+				<button id="play" class="buttonTop">
+					<i class="fa-solid fa-chess"></i>PLAY
 				</button>
 				<button id="analysis" class="buttonTop">
 					<i class="fa-solid fa-chess-board"></i>ANALYSIS
 				</button>
-				<button id="history" class="buttonTop">
+				<button id="history" class="buttonTop" onclick="redirectTo('<c:url value='/history'/>')">
 					<i class="fa-solid fa-clock"></i>HISTORY
 				</button>
+				<button id="login" onclick="redirectTo('<c:url value='/login'/>')">LOGIN</button>
+				<button id="signup" onclick="redirectTo('<c:url value='/signup'/>')">SIGN
+					UP</button>
+
 			</div>
 
 			<div id="left-bot">
@@ -88,92 +96,88 @@
 
 			<div id="divBanCo">
 				<table id="BanCo">
-
 					<tr>
-						<td id="81" onclick="Click(this.id)"><img id="i81" /></td>
-						<td id="82" onclick="Click(this.id)"><img id="i82" /></td>
-						<td id="83" onclick="Click(this.id)"><img id="i83" /></td>
-						<td id="84" onclick="Click(this.id)"><img id="i84" /></td>
-						<td id="85" onclick="Click(this.id)"><img id="i85" /></td>
-						<td id="86" onclick="Click(this.id)"><img id="i86" /></td>
-						<td id="87" onclick="Click(this.id)"><img id="i87" /></td>
-						<td id="88" onclick="Click(this.id)"><img id="i88" /></td>
-					</tr>
-
-					<tr>
-						<td id="71" onclick="Click(this.id)"><img id="i71" /></td>
-						<td id="72" onclick="Click(this.id)"><img id="i72" /></td>
-						<td id="73" onclick="Click(this.id)"><img id="i73" /></td>
-						<td id="74" onclick="Click(this.id)"><img id="i74" /></td>
-						<td id="75" onclick="Click(this.id)"><img id="i75" /></td>
-						<td id="76" onclick="Click(this.id)"><img id="i76" /></td>
-						<td id="77" onclick="Click(this.id)"><img id="i77" /></td>
-						<td id="78" onclick="Click(this.id)"><img id="i78" /></td>
+						<td id="a8"><img id="ia8" /></td>
+						<td id="b8"><img id="ib8" /></td>
+						<td id="c8"><img id="ic8" /></td>
+						<td id="d8"><img id="id8" /></td>
+						<td id="e8"><img id="ie8" /></td>
+						<td id="f8"><img id="if8" /></td>
+						<td id="g8" ><img id="ig8" /></td>
+						<td id="h8" ><img id="ih8" /></td>
 					</tr>
 					<tr>
-						<td id="61" onclick="Click(this.id)"><img id="i61" /></td>
-						<td id="62" onclick="Click(this.id)"><img id="i62" /></td>
-						<td id="63" onclick="Click(this.id)"><img id="i63" /></td>
-						<td id="64" onclick="Click(this.id)"><img id="i64" /></td>
-						<td id="65" onclick="Click(this.id)"><img id="i65" /></td>
-						<td id="66" onclick="Click(this.id)"><img id="i66" /></td>
-						<td id="67" onclick="Click(this.id)"><img id="i67" /></td>
-						<td id="68" onclick="Click(this.id)"><img id="i68" /></td>
-					</tr>
-
-
-					<tr>
-						<td id="51" onclick="Click(this.id)"><img id="i51" /></td>
-						<td id="52" onclick="Click(this.id)"><img id="i52" /></td>
-						<td id="53" onclick="Click(this.id)"><img id="i53" /></td>
-						<td id="54" onclick="Click(this.id)"><img id="i54" /></td>
-						<td id="55" onclick="Click(this.id)"><img id="i55" /></td>
-						<td id="56" onclick="Click(this.id)"><img id="i56" /></td>
-						<td id="57" onclick="Click(this.id)"><img id="i57" /></td>
-						<td id="58" onclick="Click(this.id)"><img id="i58" /></td>
+						<td id="a7" ><img id="ia7" /></td>
+						<td id="b7" ><img id="ib7" /></td>
+						<td id="c7" ><img id="ic7" /></td>
+						<td id="d7" ><img id="id7" /></td>
+						<td id="e7" ><img id="ie7" /></td>
+						<td id="f7" ><img id="if7" /></td>
+						<td id="g7" ><img id="ig7" /></td>
+						<td id="h7" ><img id="ih7" /></td>
 					</tr>
 					<tr>
-						<td id="41" onclick="Click(this.id)"><img id="i41" /></td>
-						<td id="42" onclick="Click(this.id)"><img id="i42" /></td>
-						<td id="43" onclick="Click(this.id)"><img id="i43" /></td>
-						<td id="44" onclick="Click(this.id)"><img id="i44" /></td>
-						<td id="45" onclick="Click(this.id)"><img id="i45" /></td>
-						<td id="46" onclick="Click(this.id)"><img id="i46" /></td>
-						<td id="47" onclick="Click(this.id)"><img id="i47" /></td>
-						<td id="48" onclick="Click(this.id)"><img id="i48" /></td>
+						<td id="a6" ><img id="ia6" /></td>
+						<td id="b6" ><img id="ib6" /></td>
+						<td id="c6" ><img id="ic6" /></td>
+						<td id="d6" ><img id="id6" /></td>
+						<td id="e6" ><img id="ie6" /></td>
+						<td id="f6" ><img id="if6" /></td>
+						<td id="g6" ><img id="ig6" /></td>
+						<td id="h6" ><img id="ih6" /></td>
 					</tr>
 					<tr>
-						<td id="31" onclick="Click(this.id)"><img id="i31" /></td>
-						<td id="32" onclick="Click(this.id)"><img id="i32" /></td>
-						<td id="33" onclick="Click(this.id)"><img id="i33" /></td>
-						<td id="34" onclick="Click(this.id)"><img id="i34" /></td>
-						<td id="35" onclick="Click(this.id)"><img id="i35" /></td>
-						<td id="36" onclick="Click(this.id)"><img id="i36" /></td>
-						<td id="37" onclick="Click(this.id)"><img id="i37" /></td>
-						<td id="38" onclick="Click(this.id)"><img id="i38" /></td>
+						<td id="a5" ><img id="ia5" /></td>
+						<td id="b5" ><img id="ib5" /></td>
+						<td id="c5" ><img id="ic5" /></td>
+						<td id="d5" ><img id="id5" /></td>
+						<td id="e5" ><img id="ie5" /></td>
+						<td id="f5" ><img id="if5" /></td>
+						<td id="g5" ><img id="ig5" /></td>
+						<td id="h5" ><img id="ih5" /></td>
 					</tr>
 					<tr>
-						<td id="21" onclick="Click(this.id)"><img id="i21" /></td>
-						<td id="22" onclick="Click(this.id)"><img id="i22" /></td>
-						<td id="23" onclick="Click(this.id)"><img id="i23" /></td>
-						<td id="24" onclick="Click(this.id)"><img id="i24" /></td>
-						<td id="25" onclick="Click(this.id)"><img id="i25" /></td>
-						<td id="26" onclick="Click(this.id)"><img id="i26" /></td>
-						<td id="27" onclick="Click(this.id)"><img id="i27" /></td>
-						<td id="28" onclick="Click(this.id)"><img id="i28" /></td>
+						<td id="a4" ><img id="ia4" /></td>
+						<td id="b4" ><img id="ib4" /></td>
+						<td id="c4" ><img id="ic4" /></td>
+						<td id="d4" ><img id="id4" /></td>
+						<td id="e4" ><img id="ie4" /></td>
+						<td id="f4" ><img id="if4" /></td>
+						<td id="g4" ><img id="ig4" /></td>
+						<td id="h4" ><img id="ih4" /></td>
 					</tr>
-
 					<tr>
-						<td id="11" onclick="Click(this.id)"><img id="i11" /></td>
-						<td id="12" onclick="Click(this.id)"><img id="i12" /></td>
-						<td id="13" onclick="Click(this.id)"><img id="i13" /></td>
-						<td id="14" onclick="Click(this.id)"><img id="i14" /></td>
-						<td id="15" onclick="Click(this.id)"><img id="i15" /></td>
-						<td id="16" onclick="Click(this.id)"><img id="i16" /></td>
-						<td id="17" onclick="Click(this.id)"><img id="i17" /></td>
-						<td id="18" onclick="Click(this.id)"><img id="i18" /></td>
+						<td id="a3" ><img id="ia3" /></td>
+						<td id="b3" ><img id="ib3" /></td>
+						<td id="c3" ><img id="ic3" /></td>
+						<td id="d3" ><img id="id3" /></td>
+						<td id="e3" ><img id="ie3" /></td>
+						<td id="f3" ><img id="if3" /></td>
+						<td id="g3" ><img id="ig3" /></td>
+						<td id="h3" ><img id="ih3" /></td>
+					</tr>
+					<tr>
+						<td id="a2" ><img id="ia2" /></td>
+						<td id="b2" ><img id="ib2" /></td>
+						<td id="c2" ><img id="ic2" /></td>
+						<td id="d2" ><img id="id2" /></td>
+						<td id="e2" ><img id="ie2" /></td>
+						<td id="f2" ><img id="if2" /></td>
+						<td id="g2" ><img id="ig2" /></td>
+						<td id="h2" ><img id="ih2" /></td>
+					</tr>
+					<tr>
+						<td id="a1" ><img id="ia1" /></td>
+						<td id="b1" ><img id="ib1" /></td>
+						<td id="c1" ><img id="ic1" /></td>
+						<td id="d1" ><img id="id1" /></td>
+						<td id="e1" ><img id="ie1" /></td>
+						<td id="f1" ><img id="if1" /></td>
+						<td id="g1" ><img id="ig1" /></td>
+						<td id="h1" ><img id="ih1" /></td>
 					</tr>
 				</table>
+
 			</div>
 
 			<div id="divNguoiChoiCoDo">
@@ -196,15 +200,20 @@
 					PLAY CHESS <br /> <i style="color: black;"
 						class="fa-solid fa-chess"></i>
 				</p>
-				<button class="inRight" id="playOnline">
+				
+				<button class="inRight" id="playOnline"
+					onclick="redirectToAction('<c:url value='/play'/>', 'online')">
 					<i class="fa-solid fa-bolt"></i>Play Online
 				</button>
-				<button class="inRight" id="playComputer">
+				<button class="inRight" id="playComputer"
+					onclick="redirectToAction('<c:url value='/play'/>', 'computer')">
 					<i class="fa-solid fa-computer"></i>Computer
 				</button>
-				<button class="inRight" id="playFriend">
+				<button class="inRight" id="playFriend"
+					onclick="redirectToAction('<c:url value='/play'/>', 'friend')">
 					<i class="fa-solid fa-user-group"></i>Play with Friend
 				</button>
+
 			</div>
 		</div>
 

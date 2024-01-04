@@ -3,6 +3,7 @@ body{
 	padding: 0px;
 	background-color:#EDEDEE;
 	font-family: Arial, sans-serif;
+	background-image: url(../Icon/bgrcb.png);
 }
 
 #divMain{
@@ -22,6 +23,7 @@ button:hover{
 	width: 200px;
     height: 750px;
 	background-color: rgb(160, 158, 158);
+	border: 2px solid #939393;
 }
 
 #settingsChoose{
@@ -94,6 +96,7 @@ i{
     width: 200px;
     height: auto;
     background-color: rgb(160, 158, 158);
+    border: 2px solid #939393;
 }
 
 #contentLeft{
@@ -108,6 +111,7 @@ i{
 	display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 50px;
 }
 
 .buttonContentLeft{
@@ -137,10 +141,22 @@ i{
 #contentRightTop{
     display: flex;
     width: 700px;
-    height: 180px;
+    height: 220px;
     background-color: rgb(200 200 200);
     padding-left: 30px;
     border-radius: 20px;
+    border: 2px solid #939393;
+}
+
+#formAvt{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chooseFile{
+	margin: 15px;
+    width: 175px;
 }
 
 
@@ -153,20 +169,39 @@ i{
     color: red;
 }
 
+#avtUser{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #user{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 70px;
+}
+
+.btn-img{
+    font-weight: bold;
+    width: 115px;
+    font-size: 12px;
+    border-radius: 10px;
+    border: none;
+    //margin: 5px 0px 20px 0px;
 }
 
 #contentRightBot{
     display: flex;
-    height: 400px;
+    height: 360px;
     width: 730px;
     background-color: rgb(200 200 200);
     margin-top: 10px;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
+    border: 2px solid #939393;
 }
 
 input{
@@ -220,4 +255,13 @@ input{
 
 #save:hover{
     background-color: #32dc32;
+}
+
+#country{
+    margin-left: 115px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    background-color: #a3a2a2;
+    margin-top: 10px;
 }

@@ -1,19 +1,19 @@
-/**
- * 
- */
-document.addEventListener("DOMContentLoaded", function() {
-	var ws = new WebSocket("ws://localhost:8080/spring-mvc/websocket");
 
 
-    ws.onopen = function(event) {
-        console.log("WebSocket connection opened:", event);
-    };
+function redirectTo(url) {
+    window.location.href = url;
+}
 
-    ws.onmessage = function(event) {
-        console.log("Message received from server:", event.data);
-    };
 
-    ws.onclose = function(event) {
-        console.log("WebSocket connection closed:", event);
-    };
-});
+
+function redirectToAction(url, action) {
+    window.location.href = url + action;
+}
+
+function redirectToAnalysis(gameId) {
+    // Thay đổi URL để chuyển hướng đến trang phân tích
+    window.location.href = 'analysis?gameId=' + gameId; // Thay đổi URL phù hợp
+}
+
+
+

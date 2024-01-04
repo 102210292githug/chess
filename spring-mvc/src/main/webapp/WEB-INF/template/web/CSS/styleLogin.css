@@ -3,7 +3,7 @@ body{
 	padding: 0px;
     height: 100%;
     width: auto;
-	background-image: url(../Icon/background.png);
+	background-image: url(../Icon/bgrx.png);
     display: flex;
     justify-content: center;
     flex-direction: column;
